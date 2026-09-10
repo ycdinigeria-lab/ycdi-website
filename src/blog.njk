@@ -1,0 +1,24 @@
+---
+layout: base.njk
+title: "Blog | Notes from the field | YCDI"
+seoDescription: "Teaching, reflections and lessons from YCDI sessions, conferences and school outreach."
+permalink: blog.html
+---
+<section class="pagehero">
+  <div class="wrap">
+    <div class="crumb">Blog</div>
+    <h1>Notes from the field.</h1>
+    <p class="lead">Teaching, reflections and hard-won lessons from YCDI sessions, conferences and school outreach.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="postgrid">
+      {% for post in collections.posts %}
+      <a class="postcard" href="{{ post.url }}"><div class="strip"></div><div class="in"><span class="tag">{{ post.data.category }}</span><h3>{{ post.data.title }}</h3><p>{{ post.data.excerpt }}</p><span class="go">Read article</span></div></a>
+      {% else %}
+      <p class="prose" style="color:var(--muted);">No posts yet. New posts published from the admin will appear here.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>

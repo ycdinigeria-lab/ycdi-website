@@ -1,0 +1,50 @@
+backend:
+  name: github
+  repo: ycdinigeria-lab/ycdi-website
+  branch: main
+  # OAuth handshake endpoint. See the setup checklist.
+  # Option A (all on Netlify): leave as your site origin; /auth and /callback are handled by Netlify Functions.
+  # Option B (domain-independent): set this to your Sveltia CMS Auth worker URL.
+  base_url: https://ycdinigeria.netlify.app
+
+# One shared media library. Nothing is uploaded twice.
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: blog
+    label: "Blog & Gallery"
+    label_singular: "Blog post"
+    description: "Write a post, attach photos, and tick which photos should also appear in the main Gallery."
+    folder: "src/blog"
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    preview_path: "blog-{{slug}}.html"
+    summary: "{{title}}"
+    sortable_fields: [date, title]
+    fields:
+      - { label: "Title", name: title, widget: string }
+      - { label: "Author", name: author, widget: string, default: "YCDI Team" }
+      - { label: "Publication date", name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Category", name: category, widget: select, options: ["Discipleship","School Outreach","Leadership","Conferences","Scholarships","Community","General"], default: "General" }
+      - { label: "Tags", name: tags, widget: list, required: false }
+      - { label: "Excerpt (short summary for cards)", name: excerpt, widget: text }
+      - { label: "Featured image", name: featuredImage, widget: image, required: false }
+      - { label: "Featured image alt text", name: featuredImageAlt, widget: string, required: false }
+      - { label: "Published", name: published, widget: boolean, default: true, hint: "Untick to keep this as a draft (it will not appear on the site)." }
+      - label: "Photo gallery"
+        name: gallery
+        label_singular: "Photo"
+        widget: list
+        required: false
+        summary: "{{fields.caption}}"
+        fields:
+          - { label: "Photo", name: image, widget: image }
+          - { label: "Caption", name: caption, widget: string, required: false }
+          - { label: "Alt text (describes the photo)", name: alt, widget: string, required: false }
+          - { label: "Show in main gallery", name: showInMainGallery, widget: boolean, default: false }
+      - { label: "SEO title (optional)", name: seoTitle, widget: string, required: false }
+      - { label: "SEO meta description (optional)", name: seoDescription, widget: text, required: false }
+      - { label: "Body", name: body, widget: markdown }

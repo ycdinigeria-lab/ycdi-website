@@ -1,0 +1,33 @@
+---
+layout: base.njk
+ogType: article
+---
+<section class="pagehero">
+  <div class="wrap">
+    <div class="crumb">Blog{% if category %} &middot; {{ category }}{% endif %}</div>
+    <h1>{{ title }}</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap article">
+    <p class="postmeta">{% if author %}{{ author }} &middot; {% endif %}{{ date | readableDate }}</p>
+    {% if featuredImage %}<p><img src="{{ featuredImage }}" alt="{{ featuredImageAlt or title }}" loading="lazy" style="width:100%;border-radius:12px;"></p>{% endif %}
+    {{ content | safe }}
+    {% if gallery and gallery.length %}
+    <h3>Gallery</h3>
+    <div class="galpage" data-lightbox>
+      {% for g in gallery %}{% if g.image %}
+      <figure class="gcell"><img src="{{ g.image }}" alt="{{ g.alt or g.caption or title }}" loading="lazy" data-caption="{{ g.caption }}">{% if g.caption %}<figcaption>{{ g.caption }}</figcaption>{% endif %}</figure>
+      {% endif %}{% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section bg-off">
+  <div class="wrap" style="text-align:center;">
+    <a class="btn btn-primary" href="blog.html">Back to the blog</a>
+  </div>
+</section>
+{% block scripts %}<script src="assets/js/lightbox.js" defer></script>{% endblock %}

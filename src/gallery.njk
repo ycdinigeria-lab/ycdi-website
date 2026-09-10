@@ -1,0 +1,31 @@
+---
+layout: base.njk
+title: "Gallery | YCDI"
+seoDescription: "Moments from YCDI school fellowships, conferences, mentoring and community outreach."
+permalink: gallery.html
+---
+<section class="pagehero">
+  <div class="wrap">
+    <div class="crumb">Gallery</div>
+    <h1>The faces behind the work.</h1>
+    <p class="lead">Moments from school fellowships, conferences, mentoring and community outreach across our chapters.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    {% if collections.galleryCategories.length %}
+    <div class="galfilter">
+      <button class="galbtn is-active" data-filter="all">All</button>
+      {% for cat in collections.galleryCategories %}<button class="galbtn" data-filter="{{ cat }}">{{ cat }}</button>{% endfor %}
+    </div>
+    {% endif %}
+    <div class="galpage" data-lightbox>
+      {% for g in collections.galleryItems %}
+      <figure class="gcell" data-category="{{ g.category }}"><img src="{{ g.image }}" alt="{{ g.alt }}" loading="lazy" data-caption="{{ g.caption }}">{% if g.caption %}<figcaption>{{ g.caption }} <a href="{{ g.postUrl }}">{{ g.postTitle }}</a></figcaption>{% endif %}</figure>
+      {% else %}
+      {% endfor %}
+    </div>
+    {% if not collections.galleryItems.length %}<p class="prose" style="color:var(--muted);">Photos flagged &ldquo;Show in main gallery&rdquo; on your blog posts will appear here automatically.</p>{% endif %}
+  </div>
+</section>
+{% block scripts %}<script src="assets/js/lightbox.js" defer></script>{% endblock %}

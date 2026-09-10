@@ -1,0 +1,13 @@
+{
+  "name": "ycdi-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "YCDI website with a light content build for Blog, Gallery, Programmes and Events",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}
