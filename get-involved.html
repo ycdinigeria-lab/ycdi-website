@@ -42,22 +42,50 @@
   </section>
 
   <section class="section" id="volunteer">
-    <div class="wrap cols2">
-      <div class="stack">
-        <div class="sub">Volunteer</div>
-        <p>If you love young people and have time to give, we'd be glad to have you. Volunteers teach, mentor, plan events, create content and lead chapters. Be the mentor you wish you'd had.</p>
-        <p>Because you'd be working with young people, everyone goes through the same careful process before serving. An application, a short conversation, two Christian character references, a safeguarding declaration, and orientation. It's thorough on purpose. Protecting the young people in our care comes before everything.</p>
-        <div><a class="btn btn-primary" href="#">Start your application</a></div>
+    <div class="wrap">
+      <div class="cols2">
+        <div class="stack">
+          <div class="sub">Volunteer</div>
+          <p>If you love young people and have time to give, we'd be glad to have you. Volunteers teach, mentor, plan events, create content and lead chapters. Be the mentor you wish you'd had.</p>
+          <p>Because you'd be working with young people, everyone goes through the same careful process before serving. An application, a short conversation, two Christian character references, a safeguarding declaration, and orientation. It's thorough on purpose. Protecting the young people in our care comes before everything.</p>
+        </div>
+        <div class="factbox">
+          <h4>Before you serve</h4>
+          <ul>
+            <li>Application form</li>
+            <li>A short conversation with a coordinator</li>
+            <li>Two Christian character references</li>
+            <li>Safeguarding declaration</li>
+            <li>Volunteer orientation</li>
+          </ul>
+        </div>
       </div>
-      <div class="factbox">
-        <h4>Before you serve</h4>
-        <ul>
-          <li>Application form</li>
-          <li>A short conversation with a coordinator</li>
-          <li>Two Christian character references</li>
-          <li>Safeguarding declaration</li>
-          <li>Volunteer orientation</li>
-        </ul>
+      <div class="formcard" style="margin-top:38px;max-width:780px;">
+        <h3 style="margin-top:0;">Start your application</h3>
+        <p class="formnote" style="margin-bottom:18px;">Fill this in and a coordinator will be in touch about the next steps.</p>
+        <form name="volunteer" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="thanks.html">
+          <input type="hidden" name="form-name" value="volunteer">
+          <p class="hp"><label>Leave this empty <input name="bot-field"></label></p>
+          <label class="field"><span>Full name</span><input type="text" name="name" required></label>
+          <label class="field"><span>Email</span><input type="email" name="email" required></label>
+          <label class="field"><span>Phone (optional)</span><input type="tel" name="phone"></label>
+          <label class="field"><span>Where are you based?</span><input type="text" name="location" placeholder="e.g. Benin, Lagos"></label>
+          <label class="field"><span>How would you like to help?</span>
+            <select name="interest">
+              <option>School visitor and mentor</option>
+              <option>Event organiser</option>
+              <option>Facilitator</option>
+              <option>Graphic designer</option>
+              <option>Social media and content</option>
+              <option>Course creator</option>
+              <option>Counsellor</option>
+              <option>Website and tech</option>
+              <option>Wherever I am needed</option>
+            </select>
+          </label>
+          <label class="field"><span>Tell us a little about yourself</span><textarea name="message" placeholder="Your church, what draws you to this work, anything we should know."></textarea></label>
+          <button class="btn btn-primary" type="submit">Send my application</button>
+        </form>
       </div>
     </div>
   </section>
@@ -67,26 +95,74 @@
       <div class="stack">
         <div class="sub">Support our work</div>
         <p>Giving keeps students in school, sends volunteers into more schools, and puts conferences within reach of young people who could never afford them. Every gift is handled through proper channels, recorded, and accounted for. You can read exactly how we manage money before you give.</p>
-        <div><a class="btn btn-primary" href="#">Make a donation</a> &nbsp; <a class="link" href="financial-accountability.html">See how we handle funds</a></div>
+        <div><a class="btn btn-donate" href="https://paystack.com/pay/REPLACE-WITH-YOUR-YCDI-LINK" target="_blank" rel="noopener">Give securely with Paystack</a> &nbsp; <a class="link" href="financial-accountability.html">See how we handle funds</a></div>
       </div>
-      <div class="stack">
-        <div class="sub" id="partner">Partner with us</div>
-        <p>We can't reach a generation on our own. Churches, schools, Christian professionals and organisations all have a part to play. If you'd like to partner with YCDI, let's talk.</p>
-        <div><a class="link" href="contact.html">Partner with YCDI</a></div>
+      <div class="factbox">
+        <h4>Your gift at work</h4>
+        <ul>
+          <li>School fellowships and mentoring</li>
+          <li>Scholarships for students in need</li>
+          <li>Conferences and retreats</li>
+          <li>Reaching new schools and chapters</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="section" id="share">
-    <div class="wrap cols2">
-      <div class="stack">
-        <div class="sub">Pray with us</div>
-        <p>The heart of what we do is spiritual, so prayer isn't an afterthought. Stand with us for the young people we serve, the volunteers who serve them, and the schools that open their doors.</p>
+  <section class="section" id="partner">
+    <div class="wrap">
+      <div class="cols2">
+        <div class="stack">
+          <div class="sub">Partner with us</div>
+          <p>We can't reach a generation on our own. Churches, schools, Christian professionals and organisations all have a part to play. If you'd like to partner with YCDI, tell us a little about you and let's talk.</p>
+          <p>If you are a school, you can also read <a href="for-schools.html">how we work with schools</a> first.</p>
+        </div>
+        <div class="formcard">
+          <form name="partner" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="thanks.html">
+            <input type="hidden" name="form-name" value="partner">
+            <p class="hp"><label>Leave this empty <input name="bot-field"></label></p>
+            <label class="field"><span>Your name</span><input type="text" name="name" required></label>
+            <label class="field"><span>Organisation</span><input type="text" name="organisation" placeholder="School, church or organisation"></label>
+            <label class="field"><span>You are a</span>
+              <select name="partner_type">
+                <option>School</option>
+                <option>Church</option>
+                <option>Christian professional</option>
+                <option>Company or organisation</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label class="field"><span>Email</span><input type="email" name="email" required></label>
+            <label class="field"><span>How would you like to partner?</span><textarea name="message"></textarea></label>
+            <button class="btn btn-primary" type="submit">Start the conversation</button>
+          </form>
+        </div>
       </div>
-      <div class="stack">
-        <div class="sub">Share your story</div>
-        <p>Were you shaped by YCDI? Your story helps another young person take the first step. Tell us what changed.</p>
-        <div><a class="link" href="contact.html">Share your story</a></div>
+    </div>
+  </section>
+
+  <section class="section bg-off" id="share">
+    <div class="wrap">
+      <div class="cols2">
+        <div class="stack">
+          <div class="sub">Pray with us</div>
+          <p>The heart of what we do is spiritual, so prayer isn't an afterthought. Stand with us for the young people we serve, the volunteers who serve them, and the schools that open their doors.</p>
+          <div class="sub" style="margin-top:30px;">Share your story</div>
+          <p>Were you shaped by YCDI? Your story helps another young person take the first step. Tell us what changed, and we'll only ever share it with your permission.</p>
+          <p class="formnote">If you are under 18, please ask a parent or guardian to complete this with you.</p>
+        </div>
+        <div class="formcard">
+          <form name="story" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="thanks.html">
+            <input type="hidden" name="form-name" value="story">
+            <p class="hp"><label>Leave this empty <input name="bot-field"></label></p>
+            <label class="field"><span>Your name</span><input type="text" name="name" required></label>
+            <label class="field"><span>Email</span><input type="email" name="email" required></label>
+            <label class="field"><span>Chapter or school</span><input type="text" name="chapter" placeholder="e.g. Idia College, Benin"></label>
+            <label class="field"><span>Your story</span><textarea name="story" placeholder="What did YCDI change for you?" required></textarea></label>
+            <label class="checkfield"><input type="checkbox" name="consent" value="yes" required><span>I give YCDI permission to share my story, in line with its communications policy.</span></label>
+            <button class="btn btn-primary" type="submit">Send my story</button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -123,6 +199,8 @@
         <a href="governance.html">Governance</a>
         <a href="financial-accountability.html">Financial accountability</a>
         <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
       </div>
     </div>
   </div>

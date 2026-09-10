@@ -336,3 +336,13 @@ footer .wrap{padding-top:44px;padding-bottom:26px;}
 
 .textlink svg{width:16px;height:16px;flex:none;}
 .tcard .go svg{width:16px;height:16px;}
+
+/* ---- forms ---- */
+.formcard{border:1px solid var(--line);border-radius:12px;padding:26px 24px;background:#fff;}
+.formcard h3{margin-top:0;}
+.formnote{font-size:13px;color:var(--muted);}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--deepblue);box-shadow:0 0 0 3px rgba(7,91,125,.14);}
+.checkfield{display:flex;gap:10px;align-items:flex-start;margin:4px 0 18px;font-size:14px;color:var(--text);line-height:1.45;}
+.checkfield input{margin-top:3px;width:16px;height:16px;flex:none;}
+.formcard .btn{margin-top:6px;}
+.hp{position:absolute!important;left:-9999px!important;height:0;overflow:hidden;}
