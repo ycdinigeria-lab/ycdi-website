@@ -15,7 +15,7 @@ permalink: blog.html
   <div class="wrap">
     <div class="postgrid">
       {% for post in collections.posts %}
-      <a class="postcard" href="{{ post.url }}"><div class="strip"></div><div class="in"><span class="tag">{{ post.data.category }}</span><h3>{{ post.data.title }}</h3><p>{{ post.data.excerpt }}</p><span class="go">Read article</span></div></a>
+      <a class="postcard" href="{{ post.url }}"><div class="strip"></div><div class="in"><span class="tag">{{ post.data.category }}</span><h3>{{ post.data.title }}</h3><p>{{ post.data.excerpt }}</p><span class="go">Read article</span></div>{% if post.data.featuredImage %}<div class="pthumb"><img src="{{ post.data.featuredImage }}" alt="{{ post.data.featuredImageAlt or post.data.title }}" loading="lazy"></div>{% endif %}</a>
       {% else %}
       <p class="prose" style="color:var(--muted);">No posts yet. New posts published from the admin will appear here.</p>
       {% endfor %}

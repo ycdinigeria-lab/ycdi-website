@@ -46,3 +46,101 @@ collections:
       - { label: "SEO title (optional)", name: seoTitle, widget: string, required: false }
       - { label: "SEO meta description (optional)", name: seoDescription, widget: text, required: false }
       - { label: "Body", name: body, widget: markdown }
+
+  # ---- Chapters (add, edit or reorder; the homepage count and map of states update from this) ----
+  - name: chapters
+    label: "Chapters"
+    label_singular: "Chapter"
+    description: "Add a chapter here and it appears on the Chapters page. The homepage 'Chapters' and 'States' figures count themselves from this list."
+    files:
+      - name: chapters
+        label: "All chapters"
+        file: "src/_data/chapters.json"
+        fields:
+          - label: "Chapters"
+            name: items
+            widget: list
+            label_singular: "Chapter"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Chapter name", name: name, widget: string, hint: "e.g. Benin, or Ilesa, Osun" }
+              - { label: "State", name: state, widget: string, hint: "e.g. Edo State. This drives the 'States' number on the homepage." }
+              - { label: "Country", name: country, widget: string, default: "Nigeria" }
+              - { label: "Since (optional)", name: since, widget: string, required: false, hint: "e.g. Since 2017" }
+              - { label: "Short headline", name: headline, widget: string }
+              - { label: "Coordinator (optional)", name: coordinator, widget: string, required: false }
+              - { label: "Volunteers (optional)", name: volunteers, widget: string, required: false }
+              - { label: "Schools (optional)", name: schools, widget: string, required: false }
+              - { label: "Photo (optional, shown on the homepage cards)", name: image, widget: image, required: false }
+              - { label: "Story", name: story, widget: text, hint: "Leave a blank line between paragraphs." }
+
+  # ---- Leadership (Board, National executive, Chapter coordinators), each with a photo ----
+  - name: leadership
+    label: "Leadership"
+    description: "The people on the Leadership page. Upload a photo for each, or leave it empty to show a neutral placeholder."
+    files:
+      - name: leadership
+        label: "Leadership team"
+        file: "src/_data/leadership.json"
+        fields:
+          - label: "Board & international leadership"
+            name: board
+            widget: list
+            label_singular: "Person"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: name, widget: string }
+              - { label: "Role", name: role, widget: string }
+              - { label: "Photo", name: photo, widget: image, required: false }
+              - { label: "Bio", name: bio, widget: text }
+          - label: "National executive"
+            name: national
+            widget: list
+            label_singular: "Person"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: name, widget: string }
+              - { label: "Role", name: role, widget: string }
+              - { label: "Photo", name: photo, widget: image, required: false }
+              - { label: "Bio", name: bio, widget: text }
+          - label: "Chapter coordinators"
+            name: coordinators
+            widget: list
+            label_singular: "Coordinator"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: name, widget: string }
+              - { label: "Location", name: location, widget: string, hint: "e.g. Benin, Edo State" }
+              - { label: "Photo", name: photo, widget: image, required: false }
+
+  # ---- Homepage testimonials ----
+  - name: testimonials
+    label: "Testimonials"
+    description: "The quote cards under 'Real people. Real stories.' Only add a photo of a real person who gave the quote, with their permission."
+    files:
+      - name: testimonials
+        label: "Homepage testimonials"
+        file: "src/_data/testimonials.json"
+        fields:
+          - label: "Testimonials"
+            name: items
+            widget: list
+            label_singular: "Testimonial"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Quote", name: quote, widget: text }
+              - { label: "Name", name: name, widget: string }
+              - { label: "Detail", name: detail, widget: string, required: false, hint: "e.g. YCDI Alumna, Idia College, Benin" }
+              - { label: "Photo (optional)", name: photo, widget: image, required: false, hint: "Real person, with permission. Leave empty to show a neutral placeholder." }
+
+  # ---- Homepage numbers that cannot be counted automatically ----
+  - name: sitedata
+    label: "Homepage numbers"
+    description: "Chapters and States count themselves from the Chapters list. These two are set by hand."
+    files:
+      - name: stats
+        label: "Homepage stat figures"
+        file: "src/_data/stats.json"
+        fields:
+          - { label: "Young people reached", name: reached, widget: number, value_type: int, hint: "Shown with a + after it." }
+          - { label: "Serving since (year)", name: since, widget: string }

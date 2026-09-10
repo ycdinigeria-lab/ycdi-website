@@ -1,10 +1,14 @@
+---
+permalink: /leadership.html
+eleventyExcludeFromCollections: true
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact YCDI</title>
-<meta name="description" content="Get in touch with the Young Christian Development Initiative for volunteering, partnership, school visits or general enquiries.">
+<title>Leadership | The people who lead YCDI</title>
+<meta name="description" content="YCDI's Board of Trustees, national executive team and chapter coordinators.">
 <link rel="icon" href="assets/ycdi-crest.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,47 +39,56 @@
 <main>
   <section class="pagehero">
     <div class="wrap">
-      <div class="crumb">Contact</div>
-      <h1>Get in touch.</h1>
-      <p class="lead">Whether you want to volunteer, partner, invite us to your school, or simply learn more, we'd love to hear from you.</p>
+      <span class="crumb">Leadership</span>
+      <h1>The people who lead YCDI.</h1>
+      <p class="lead">YCDI is guided by a Board of Trustees, a national executive team and chapter coordinators in each region, people from different fields who share one commitment to raising young leaders of faith and integrity.</p>
     </div>
   </section>
 
   <section class="section">
-    <div class="wrap contact-grid">
-      <div class="stack">
-        <div class="sub">Send us a message</div>
-        <p>Tell us a little about why you're reaching out and the right person will get back to you.</p>
-        <div class="formcard" style="margin-top:12px;">
-          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
-            <input type="hidden" name="form-name" value="contact">
-            <p class="hp"><label>Leave this empty <input name="bot-field"></label></p>
-            <label class="field"><span>Name</span><input type="text" name="name" required></label>
-            <label class="field"><span>Email</span><input type="email" name="email" required></label>
-            <label class="field"><span>Chapter or location</span><input type="text" name="chapter" placeholder="e.g. Benin, Lagos"></label>
-            <label class="field"><span>Reason for contact</span>
-              <select name="reason"><option>Volunteer</option><option>Partner with us</option><option>Invite us to a school</option><option>Give</option><option>Share my story</option><option>Something else</option></select>
-            </label>
-            <label class="field"><span>Message</span><textarea name="message" placeholder="How can we help?" required></textarea></label>
-            <button class="btn btn-primary" type="submit">Send message</button>
-          </form>
+    <div class="wrap">
+      <span class="kicker">Board and international leadership</span>
+      <h2>Those who hold the vision.</h2>
+      <div class="leadergrid" style="margin-top:26px;">
+        {% for p in leadership.board %}
+        <div class="leader">
+          <img class="lphoto" src="{{ p.photo or '/assets/photos/placeholder-person.svg' }}" alt="{{ p.name }}" loading="lazy">
+          <h4>{{ p.name }}</h4>
+          <div class="role">{{ p.role }}</div>
+          <p>{{ p.bio }}</p>
         </div>
+        {% endfor %}
       </div>
-      <div class="stack">
-        <div class="factbox">
-          <h4>Reach us</h4>
-          <ul>
-            <li>Email: info@ycdinigeria.org</li>
-            <li>Facebook, Instagram, X and YouTube: @ycdinigeria</li>
-          </ul>
+    </div>
+  </section>
+
+  <section class="section bg-off">
+    <div class="wrap">
+      <span class="kicker">National executive</span>
+      <h2>Those who carry the work.</h2>
+      <div class="leadergrid" style="margin-top:26px;">
+        {% for p in leadership.national %}
+        <div class="leader">
+          <img class="lphoto" src="{{ p.photo or '/assets/photos/placeholder-person.svg' }}" alt="{{ p.name }}" loading="lazy">
+          <h4>{{ p.name }}</h4>
+          <div class="role">{{ p.role }}</div>
+          <p>{{ p.bio }}</p>
         </div>
-        <div class="sub" style="margin-top:28px;">Find a chapter</div>
-        <p>We run in Benin, Auchi, Ilesa (Osun), Ogbomosho, Irele, Agbor and Lagos. For the safety of the students we work with, chapter enquiries are handled through the central office rather than personal numbers. Tell us which chapter you mean and we'll connect you.</p>
-        <div class="concern" style="margin-top:20px;">
-          <h3>Raising a safeguarding concern</h3>
-          <p style="max-width:60ch;">Safeguarding concerns are handled separately and with care. See <a href="safeguarding.html">how to report a concern</a>. If a child is in immediate danger, contact the police on <span class="em">112</span> or <span class="em">199</span>, or NAPTIP on <span class="em">0800 800 8000</span>.</p>
-        </div>
+        {% endfor %}
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <span class="kicker">Chapter coordinators</span>
+      <h2>Those who lead on the ground.</h2>
+      <div class="coordgrid">
+        {% for p in leadership.coordinators %}
+        <div class="coord"><img class="cphoto" src="{{ p.photo or '/assets/photos/placeholder-person.svg' }}" alt="{{ p.name }}" loading="lazy"><div class="ctext"><b>{{ p.name }}</b><span>{{ p.location }}</span></div></div>
+        {% endfor %}
+      </div>
+      <p style="margin-top:22px;"><a class="link" href="governance.html">See how YCDI is governed and held accountable</a></p>
     </div>
   </section>
 </main>
@@ -117,10 +130,10 @@
     </div>
   </div>
 </footer>
-<script>
+{% raw %}<script>
   var t=document.getElementById('navtoggle');var m=document.getElementById('menu');
   if(t&&m){t.addEventListener('click',function(){var o=m.classList.toggle('open');t.setAttribute('aria-expanded',o);});
   m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');t.setAttribute('aria-expanded',false);});});}
-</script>
+</script>{% endraw %}
 </body>
 </html>

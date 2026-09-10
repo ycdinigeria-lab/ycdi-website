@@ -1,0 +1,82 @@
+{
+  "items": [
+    {
+      "name": "Benin",
+      "state": "Edo State",
+      "country": "Nigeria",
+      "since": "Since 2017",
+      "headline": "Where it all started.",
+      "coordinator": "Djorba George, with a team of volunteers",
+      "schools": "Carrick Memorial, Eghosa Grammar School, Idia College",
+      "image": "/assets/photos/chapter-benin.jpg",
+      "story": "YCDI began in Benin in 2017 at the University of Benin, Ekehuan campus. It was passion meeting opportunity. Dr. Egbonim had come to Nigeria looking for like-minded people to reach young people, and found Jegede Joseph, who took the idea to his coursemates Christopher Olatunji, Olatunde Godfrey, Ayaneche Cornelius and Obasi Cyril.\n\nThe team started visiting schools around the campus. Years on, the work still thrives here under Djorba George and a committed group of volunteers."
+    },
+    {
+      "name": "Auchi",
+      "state": "Edo State",
+      "country": "Nigeria",
+      "since": "Since 2017",
+      "headline": "Steady, patient growth.",
+      "coordinator": "Brother Evans and Sister Faith",
+      "schools": "Rising Star (Jattu), St. Joseph",
+      "image": "",
+      "story": "YCDI was introduced to Auchi in 2017 by Brother Chris Olatunji and Joseph from Lagos. The formal work took shape in 2018 with the first regional conference and a partnership with the St. Joseph's school fellowship.\n\nWhen Sister Faith joined that year, the chapter found its feet. By 2019 the team was opening its own schools, and it grew to nine. In June 2021, Auchi hosted its own regional conference, a real milestone for a chapter that started small and kept going."
+    },
+    {
+      "name": "Ilesa, Osun",
+      "state": "Osun State",
+      "country": "Nigeria",
+      "since": "Since 2022",
+      "headline": "A young chapter, already reaching far.",
+      "coordinator": "Pastor Israel Abiodun",
+      "volunteers": "Sister Grace Sunday, Brother Hosanna Adebayo, Sister Esther Babatunde",
+      "schools": "Miracle Group of Schools, Babalola Memorial Girls' Grammar School, First Class Secondary School, Hope Grammar School",
+      "image": "/assets/photos/chapter-osun.jpg",
+      "story": "YCDI Osun began in Ilesa in 2022, when Pastor Israel Abiodun took on the coordination and shifted his focus to the mission. Since then the chapter has reached many students, some of whom have carried what they learned into new towns after graduating.\n\nThe team works to strengthen students academically, morally and spiritually through school fellowships and mentoring, and the Ilesa chapter continues to flourish."
+    },
+    {
+      "name": "Ogbomosho",
+      "state": "Oyo State",
+      "country": "Nigeria",
+      "since": "",
+      "headline": "Our newest ground.",
+      "coordinator": "Brother Samuel Falaye",
+      "schools": "",
+      "image": "",
+      "story": "Ogbomosho is our newest chapter, an expansion out of the work in Ilesa. Brother Samuel Falaye leads it, carrying the mission into Oyo State and reaching a new set of young lives."
+    },
+    {
+      "name": "Irele, Ondo",
+      "state": "Ondo State",
+      "country": "Nigeria",
+      "since": "Since 2019",
+      "headline": "The vision, taken home.",
+      "coordinator": "Abisere Caleb",
+      "schools": "United Grammar School (Ode-Irele), Arerin Grammar School, Diamond College, Premier College",
+      "image": "",
+      "story": "YCDI Ondo began in Irele in 2019, started by Brother Olatunde Godfrey, who after graduating in Benin saw the need to bring the same work to his hometown. He shared the vision with people who believed in it, and the team began regular school visits.\n\nThree conferences have been held so far, with many lives touched. The chapter is now led by Abisere Caleb."
+    },
+    {
+      "name": "Agbor",
+      "state": "Delta State",
+      "country": "Nigeria",
+      "since": "Since February 2022",
+      "headline": "Fast growth, real reach.",
+      "coordinator": "Brother Andrew Onwuzurike, with a team of pastors and volunteers",
+      "schools": "Igumbor-Otiku, Dein Palace, Ime-Obi, Emuhu Secondary",
+      "image": "/assets/photos/chapter-agbor.jpg",
+      "story": "Agbor was established in February 2022. In just two years the chapter expanded to more than 20 schools and reached over 5,000 teenagers, supported by a strong team of volunteers.\n\nAlongside school fellowships, Agbor has run conferences drawing more than 400 students from across the region, strengthening the work both locally and nationally."
+    },
+    {
+      "name": "Lagos",
+      "state": "Lagos State",
+      "country": "Nigeria",
+      "since": "Since 2024",
+      "headline": "Just getting started.",
+      "coordinator": "",
+      "schools": "Unity Grammar School, Oshodi",
+      "image": "/assets/photos/chapter-lagos.jpg",
+      "story": "YCDI came to Lagos in 2024 and began school visits straight after receiving approval from the Lagos Education District VI, starting at Unity Grammar School in Oshodi. It is early days, but the ground is being laid."
+    }
+  ]
+}

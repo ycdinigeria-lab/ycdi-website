@@ -47,5 +47,38 @@ module.exports = function (eleventyConfig) {
     return [...s];
   });
 
+  // First N items of a list
+  eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
+
+  // Only items that have a photo set
+  eleventyConfig.addFilter("withImage", (arr) => (arr || []).filter((i) => i && i.image));
+
+  // Text before the first occurrence of a separator ("Ilesa, Osun" -> "Ilesa")
+  eleventyConfig.addFilter("before", (s, sep) => String(s || "").split(sep)[0].trim());
+
+  // Count of distinct states across chapter items (drives the "States" stat)
+  eleventyConfig.addFilter("uniqueStates", (items) =>
+    [...new Set((items || []).map((i) => (i.state || "").trim()).filter(Boolean))].length
+  );
+
+  // Count of distinct countries (for when YCDI grows beyond Nigeria)
+  eleventyConfig.addFilter("uniqueCountries", (items) =>
+    [...new Set((items || []).map((i) => (i.country || "").trim()).filter(Boolean))].length
+  );
+
+  // 5000 -> "5,000"
+  eleventyConfig.addFilter("thousands", (n) =>
+    Number(n || 0).toLocaleString("en-GB")
+  );
+
+  // Turn a plain-text field with blank lines into paragraphs
+  eleventyConfig.addFilter("paragraphs", (text) => {
+    if (!text) return "";
+    return String(text)
+      .split(/\n\s*\n/)
+      .map((p) => `<p>${p.trim().replace(/\n/g, "<br>")}</p>`)
+      .join("\n");
+  });
+
   return { dir: { input: "src", output: "_site", includes: "_includes", data: "_data" } };
 };

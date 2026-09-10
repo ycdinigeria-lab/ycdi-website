@@ -1,0 +1,50 @@
+{
+  "board": [
+    {
+      "name": "Dr. Donatus M. Egbonim",
+      "role": "Founder and International Coordinator",
+      "photo": "",
+      "bio": "A medical doctor and surgeon with over 35 years in practice, Dr. Egbonim trained at the University of Ibadan College of Medicine and holds a Master's in Healthcare Administration. He founded YCDI out of a conviction that young people, discipled well, can shape a nation. He serves with the Redeemed Christian Church of God in Austin, Texas, and is a husband and father of four."
+    },
+    {
+      "name": "Mrs. Margaret Egbonim",
+      "role": "Board Member",
+      "photo": "",
+      "bio": "A servant of Christ and a Gastroenterology Nurse Practitioner, Mrs. Egbonim supports the youth outreach in Nigeria and serves widely at RCCG Cornerstone, where she leads the Virtuous Ladies group and works across the outreach, welfare and health ministries."
+    },
+    {
+      "name": "Olatunji Oshiobughie",
+      "role": "Board Member and National Coordinator",
+      "photo": "",
+      "bio": "A Mass Communication graduate of the University of Benin, with a National Diploma from the Federal Polytechnic, Auchi, Olatunji is an entrepreneur with a strong Scripture Union background and certifications in youth coaching and mentoring. A former freelance reporter with NTA-Uzairue, he has helped drive YCDI's growth across its chapters."
+    }
+  ],
+  "national": [
+    {
+      "name": "Courage Oshiobughie",
+      "role": "National Executive",
+      "photo": "",
+      "bio": "A Biochemistry graduate of the Federal Polytechnic, Auchi, Courage spent two years as a resource person at the Centre for Entrepreneurship Development. An entrepreneur and mentor, she has a particular heart for empowering young people and children."
+    },
+    {
+      "name": "Jegede Joseph",
+      "role": "National Executive \u00b7 First Coordinator",
+      "photo": "",
+      "bio": "An award-winning international journalist, digital-skills trainer and media entrepreneur, Joseph has held roles across the BBC, BBC Yoruba, TVC News and TMC TV. He was among the first to carry the YCDI vision, and brings deep experience in media and youth development."
+    },
+    {
+      "name": "Olatunde Godfrey Adewola",
+      "role": "Executive Committee \u00b7 First Coordinator, Ondo Chapter",
+      "photo": "",
+      "bio": "A minister of the gospel and seasoned facilitator, Godfrey has mentored thousands of teenagers and youth over the years. A former vice president of the GOFAMINT Student Fellowship at UNIBEN, he is a corporate communications professional and a musician who founded Pristine Music Academy."
+    }
+  ],
+  "coordinators": [
+    { "name": "Djorba George", "location": "Benin, Edo State", "photo": "" },
+    { "name": "Brother Evans and Sister Faith", "location": "Auchi, Edo State", "photo": "" },
+    { "name": "Pastor Israel Abiodun", "location": "Ilesa, Osun State", "photo": "" },
+    { "name": "Brother Samuel Falaye", "location": "Ogbomosho, Oyo State", "photo": "" },
+    { "name": "Abisere Caleb", "location": "Irele, Ondo State", "photo": "" },
+    { "name": "Brother Andrew Onwuzurike", "location": "Agbor, Delta State", "photo": "" }
+  ]
+}
