@@ -5,8 +5,6 @@ backend:
   # OAuth handshake endpoint. See the setup checklist.
   # Option A (all on Netlify): leave as your site origin; /auth and /callback are handled by Netlify Functions.
   # Option B (domain-independent): set this to your Sveltia CMS Auth worker URL.
-  base_url: https://ycdinigeria.netlify.app
-
 # One shared media library. Nothing is uploaded twice.
 media_folder: "src/assets/uploads"
 public_folder: "/assets/uploads"
