@@ -3,15 +3,15 @@
   "caption": "Young people. Real change. A greater tomorrow.",
   "slides": [
     {
-      "image": "/assets/photos/hero-1.jpg",
-      "alt": "YCDI students and team members with a guest at a school outreach in Agbor, Delta",
+      "image": "/assets/uploads/hero-2.jpg",
+      "alt": "A student in a green beret seated with classmates during a YCDI school programme",
       "focalX": 50,
       "focalY": 40
     },
     {
-      "image": "/assets/photos/hero-2.jpg",
-      "alt": "A student in a green beret seated with classmates during a YCDI school programme",
-      "focalX": 40,
+      "image": "/assets/uploads/hero-3.jpg",
+      "alt": "YCDI volunteers and facilitators together at a gathering",
+      "focalX": 45,
       "focalY": 42
     },
     {
