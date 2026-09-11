@@ -179,7 +179,7 @@ collections:
             summary: "{{fields.title}} ({{fields.dateLabel}})"
             fields:
               - { label: "Title", name: title, widget: string }
-              - { label: "Date", name: date, widget: date, format: "YYYY-MM-DD", hint: "Used to sort and to decide upcoming vs past." }
+              - { label: "Date", name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", hint: "Used to sort and to decide upcoming vs past." }
               - { label: "Date shown on the page", name: dateLabel, widget: string, hint: "e.g. 25 September 2026, or October 2026 if the day is not fixed yet." }
               - { label: "Location", name: location, widget: string, required: false }
               - { label: "Summary", name: summary, widget: text }
