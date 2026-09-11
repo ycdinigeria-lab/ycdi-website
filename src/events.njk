@@ -1,0 +1,72 @@
+---
+layout: base.njk
+permalink: /events.html
+title: Events
+seoTitle: "Events | YCDI"
+seoDescription: "Conferences, prayer gatherings and the moments YCDI comes together across its chapters. See what is coming up next."
+eleventyExcludeFromCollections: true
+---
+<main>
+  <section class="pagehero">
+    <div class="wrap">
+      <div class="crumb">Events</div>
+      <h1>What's coming up.</h1>
+      <p class="lead">Conferences, prayer gatherings and the moments we come together across the chapters. Here is where to find us next.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <span class="kicker">Upcoming</span>
+      {% set up = events.items | upcomingEvents %}
+      {% if up | length %}
+      <div class="event-list">
+        {% for e in up %}
+        <article class="event-card">
+          {% if e.image %}<div class="event-img"><img src="{{ e.image }}" alt="{{ e.title }}" loading="lazy"></div>{% endif %}
+          <div class="event-body">
+            <div class="event-date">{{ e.dateLabel or (e.date | readableDate) }}</div>
+            <h3>{{ e.title }}</h3>
+            {% if e.location %}<div class="event-loc">{{ e.location }}</div>{% endif %}
+            <p>{{ e.summary }}</p>
+            {% if e.note %}<p class="event-note">{{ e.note }}</p>{% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="prose">Nothing on the calendar just now. We are always planning the next gathering, so check back soon, or follow us on social media to hear about it first.</p>
+      {% endif %}
+    </div>
+  </section>
+
+  {% set past = events.items | pastEvents %}
+  {% if past | length %}
+  <section class="section bg-off">
+    <div class="wrap">
+      <span class="kicker">Recently</span>
+      <h2>Where we have been.</h2>
+      <div class="event-list past">
+        {% for e in past %}
+        <article class="event-card">
+          <div class="event-body">
+            <div class="event-date">{{ e.dateLabel or (e.date | readableDate) }}</div>
+            <h3>{{ e.title }}</h3>
+            {% if e.location %}<div class="event-loc">{{ e.location }}</div>{% endif %}
+            <p>{{ e.summary }}</p>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="section final-simple">
+    <div class="wrap">
+      <h2>Want us at your school or church?</h2>
+      <p>Invite YCDI to run a fellowship, a conference or an outreach with your young people.</p>
+      <div class="hero-actions"><a class="btn btn-white" href="for-schools.html">For schools</a><a class="btn btn-ghost-white" href="get-involved.html">Get involved</a></div>
+    </div>
+  </section>
+</main>

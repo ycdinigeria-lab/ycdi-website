@@ -80,5 +80,22 @@ module.exports = function (eleventyConfig) {
       .join("\n");
   });
 
+  // Render a markdown string (used by editable programme bodies)
+  const md = require("markdown-it")({ html: true, linkify: true, breaks: false });
+  eleventyConfig.addFilter("md", (s) => (s ? md.render(String(s)) : ""));
+
+  // Split events into upcoming and past against the build date, sorted sensibly
+  const startOfToday = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; };
+  eleventyConfig.addFilter("upcomingEvents", (items) =>
+    (items || [])
+      .filter((e) => e.date && new Date(e.date) >= startOfToday())
+      .sort((a, b) => new Date(a.date) - new Date(b.date))
+  );
+  eleventyConfig.addFilter("pastEvents", (items) =>
+    (items || [])
+      .filter((e) => e.date && new Date(e.date) < startOfToday())
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+  );
+
   return { dir: { input: "src", output: "_site", includes: "_includes", data: "_data" } };
 };

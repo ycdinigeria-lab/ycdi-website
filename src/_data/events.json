@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "title": "National Youth Conference",
+      "date": "2026-08-10",
+      "dateLabel": "August 2026",
+      "location": "Venue to be announced",
+      "summary": "Our biggest gathering of the year, bringing young people together from across the chapters for worship, teaching and a bigger vision of what their lives can become.",
+      "image": "",
+      "note": ""
+    },
+    {
+      "title": "Day of Prayer and Fasting",
+      "date": "2026-09-25",
+      "dateLabel": "25 September 2026",
+      "location": "Every chapter",
+      "summary": "A day set aside across all our chapters to pray for our students, our volunteers and the schools that keep their doors open to us.",
+      "image": "",
+      "note": ""
+    },
+    {
+      "title": "Volunteer Appreciation and Donor Night",
+      "date": "2026-10-14",
+      "dateLabel": "October 2026",
+      "location": "Venue to be announced",
+      "summary": "An evening to honour the volunteers who carry this work week after week, and to stand alongside the partners and donors who make it possible.",
+      "image": "",
+      "note": ""
+    },
+    {
+      "title": "Annual Prayer and Vision Night",
+      "date": "2026-12-19",
+      "dateLabel": "19 December 2026",
+      "location": "Online and in person",
+      "summary": "We close the year together in worship and thanksgiving, share what has happened across the chapters, and look ahead to the year to come.",
+      "image": "",
+      "note": ""
+    }
+  ]
+}

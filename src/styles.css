@@ -55,8 +55,8 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.97);backdro
 .brand img{height:44px;width:auto;}
 .brand .bname{font-family:"Montserrat",sans-serif;font-weight:800;font-size:16px;color:var(--ink);line-height:1;letter-spacing:0;}
 .brand .bname span{display:block;font-weight:600;font-size:9.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:3px;}
-.navlinks{display:flex;gap:24px;align-items:center;}
-.navlinks a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;font-family:"Open Sans",sans-serif;}
+.navlinks{display:flex;gap:20px;align-items:center;}
+.navlinks a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;font-family:"Open Sans",sans-serif;white-space:nowrap;}
 .navlinks a:hover,.navlinks a.active{color:var(--deepblue);}
 .nav .btn-primary{padding:10px 20px;}
 .navtoggle{display:none;background:none;border:0;font-size:26px;cursor:pointer;padding:6px;color:var(--ink);}
@@ -405,3 +405,25 @@ footer .wrap{padding-top:44px;padding-bottom:26px;}
 .coord .cphoto{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:0 0 auto;background:var(--blue-tint);border:1px solid var(--line);}
 .coord .ctext{display:flex;flex-direction:column;}
 .coord .ctext b{margin-bottom:2px;}
+
+/* ============================================================
+   Events page + programmes (What We Do) tidy
+   ============================================================ */
+.event-list{display:flex;flex-direction:column;gap:16px;margin-top:24px;}
+.event-card{display:flex;gap:0;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+.event-card .event-img{flex:0 0 34%;max-width:280px;background:var(--offwhite);}
+.event-card .event-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.event-card .event-body{padding:22px 24px;border-left:4px solid var(--blue);flex:1;}
+.event-card .event-img + .event-body{border-left:0;}
+.event-date{color:var(--blue);font-weight:700;font-size:.82rem;letter-spacing:.03em;text-transform:uppercase;}
+.event-card h3{margin:6px 0 4px;font-size:1.28rem;}
+.event-loc{color:var(--muted);font-weight:600;font-size:.92rem;margin-bottom:10px;}
+.event-card .event-body p{margin:0;color:var(--ink);}
+.event-note{margin-top:8px!important;color:var(--muted)!important;font-size:.9rem;font-style:italic;}
+.event-list.past .event-card{background:var(--offwhite);}
+.event-list.past .event-card .event-body{border-left-color:var(--line);}
+@media(max-width:720px){
+  .event-card{flex-direction:column;}
+  .event-card .event-img{max-width:none;flex:none;aspect-ratio:16/9;}
+  .event-card .event-body{border-left:0;border-top:4px solid var(--blue);}
+}

@@ -144,3 +144,44 @@ collections:
         fields:
           - { label: "Young people reached", name: reached, widget: number, value_type: int, hint: "Shown with a + after it." }
           - { label: "Serving since (year)", name: since, widget: string }
+
+  # ---- Programmes (the "What We Do" page sections) ----
+  - name: programmes
+    label: "Programmes"
+    description: "The programme areas on the What We Do page. Add, edit or reorder them here."
+    files:
+      - name: programmes
+        label: "What We Do sections"
+        file: "src/_data/programmes.json"
+        fields:
+          - label: "Programmes"
+            name: items
+            widget: list
+            label_singular: "Programme"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Description", name: body, widget: markdown, hint: "Links are fine, e.g. our safeguarding page." }
+
+  # ---- Events (upcoming and past) ----
+  - name: events
+    label: "Events"
+    description: "Public gatherings. An event moves from Upcoming to Past on its own once its date passes and the site rebuilds."
+    files:
+      - name: events
+        label: "All events"
+        file: "src/_data/events.json"
+        fields:
+          - label: "Events"
+            name: items
+            widget: list
+            label_singular: "Event"
+            summary: "{{fields.title}} ({{fields.dateLabel}})"
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Date", name: date, widget: date, format: "YYYY-MM-DD", hint: "Used to sort and to decide upcoming vs past." }
+              - { label: "Date shown on the page", name: dateLabel, widget: string, hint: "e.g. 25 September 2026, or October 2026 if the day is not fixed yet." }
+              - { label: "Location", name: location, widget: string, required: false }
+              - { label: "Summary", name: summary, widget: text }
+              - { label: "Photo (optional)", name: image, widget: image, required: false }
+              - { label: "Small note (optional)", name: note, widget: string, required: false, hint: "e.g. Details to be confirmed." }
