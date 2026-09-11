@@ -1,6 +1,15 @@
 ---
 permalink: /index.html
 eleventyExcludeFromCollections: true
+# Hero background slideshow. One photo = a clean full-bleed hero.
+# Add 4-6 real programme photos below and it cross-fades between them.
+#   src   image URL, or /assets/photos/NAME.jpg once you drop real photos in
+#   alt   describe the actual scene (only the first is read out; the rest are decorative)
+#   focus object-position, e.g. "50% 35%" to keep faces in frame across crops
+heroSlides:
+  - src: "https://res.cloudinary.com/djy83r6px/image/upload/w_1920,h_1280,c_fill,g_auto,f_auto,q_auto/v1766828679/ycdi-three_pu7ie8.webp"
+    alt: "Three smiling YCDI students together outside their school"
+    focus: "50% 40%"
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +23,7 @@ eleventyExcludeFromCollections: true
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="preload" as="image" href="{{ heroSlides[0].src }}" fetchpriority="high">
 <script>document.documentElement.className += " js";</script>
 </head>
 <body>
@@ -40,25 +50,34 @@ eleventyExcludeFromCollections: true
 </header>
 <main id="top">
 
-  <section class="hero">
+  <section class="hero" aria-label="YCDI programmes in the field">
+    <!-- Background slideshow. Photos come from heroSlides in this file's front matter.
+         One photo renders a clean full-bleed hero; add more and it cross-fades. -->
+    <div class="hero-bg">
+      {%- for s in heroSlides -%}
+      <img class="hero-slide{% if loop.first %} is-active{% endif %}"
+           src="{{ s.src }}"
+           alt="{% if loop.first %}{{ s.alt }}{% endif %}"
+           style="object-position:{{ s.focus or '50% 50%' }}"
+           {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+           decoding="async">
+      {%- endfor -%}
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
     <div class="wrap hero-inner">
-      <div>
+      <div class="hero-content">
         <span class="eyebrow reveal" style="--rd:0ms">Faith. Growth. Leadership. Impact.</span>
         <h1 class="reveal" style="--rd:90ms">We raise the <span class="accent-red">young leaders</span> Nigeria is waiting for.</h1>
         <p class="sub reveal" style="--rd:170ms">YCDI works in schools and communities across Nigeria, helping young people grow in faith, character and the skills they need to lead well. We've been at it since 2017, and it's still one student, one school, one changed life at a time.</p>
         <div class="hero-actions reveal" style="--rd:250ms">
           <a class="btn btn-primary" href="https://hub.ycdinigeria.org/apply" rel="noopener">Apply to Join <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h13M12 6l6 6-6 6"/></svg></a>
-          <a class="btn btn-outline" href="about.html">Learn More</a>
+          <a class="btn btn-ghost-white" href="about.html">Learn More</a>
         </div>
-      </div>
-      <div class="hero-media reveal-media">
-        <div class="frame">
-          <img src="https://res.cloudinary.com/djy83r6px/image/upload/w_1200,h_1050,c_fill,g_auto,f_auto,q_auto/v1766828679/ycdi-three_pu7ie8.webp" alt="Three smiling YCDI students together outside their school" width="1200" height="1050" fetchpriority="high">
-          <div class="hero-script">A brighter Nigeria<br>is possible</div>
-        </div>
-        <div class="cap">Young people. Real change. A greater tomorrow.</div>
       </div>
     </div>
+
+    <div class="hero-dots" aria-label="Choose slide"></div>
   </section>
 
   <section class="statbar">
