@@ -1,0 +1,30 @@
+{
+  "script": "A brighter Nigeria\nis possible",
+  "caption": "Young people. Real change. A greater tomorrow.",
+  "slides": [
+    {
+      "image": "/assets/photos/hero-1.jpg",
+      "alt": "YCDI students and team members with a guest at a school outreach in Agbor, Delta",
+      "focalX": 50,
+      "focalY": 40
+    },
+    {
+      "image": "/assets/photos/hero-2.jpg",
+      "alt": "A student in a green beret seated with classmates during a YCDI school programme",
+      "focalX": 40,
+      "focalY": 42
+    },
+    {
+      "image": "/assets/photos/hero-3.jpg",
+      "alt": "YCDI students smiling and celebrating together at an outreach event",
+      "focalX": 50,
+      "focalY": 45
+    },
+    {
+      "image": "/assets/photos/hero-4.jpg",
+      "alt": "YCDI volunteers and facilitators together at a gathering",
+      "focalX": 50,
+      "focalY": 40
+    }
+  ]
+}

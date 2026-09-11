@@ -47,6 +47,29 @@ collections:
       - { label: "SEO meta description (optional)", name: seoDescription, widget: text, required: false }
       - { label: "Body", name: body, widget: markdown }
 
+  # ---- Homepage hero (the photo carousel and the two lines of text with it) ----
+  - name: hero
+    label: "Homepage hero"
+    description: "The photo carousel at the top of the homepage. Add, remove, reorder or replace photos. The slideshow starts on its own once there is more than one photo."
+    files:
+      - name: hero
+        label: "Homepage hero"
+        file: "src/_data/hero.json"
+        fields:
+          - { label: "Script line (shown over the photo)", name: script, widget: text, hint: "The italic line on the photo. Press Enter for a second line." }
+          - { label: "Caption (shown under the photo)", name: caption, widget: string }
+          - label: "Photos"
+            name: slides
+            widget: list
+            label_singular: "Photo"
+            summary: "{{fields.alt}}"
+            hint: "Drag to reorder. The first photo shows first and loads fastest, so lead with a strong one. Around 1600px wide and under 200KB is ideal."
+            fields:
+              - { label: "Photo", name: image, widget: image }
+              - { label: "Alt text (describes the photo for screen readers)", name: alt, widget: string }
+              - { label: "Horizontal focus %", name: focalX, widget: number, value_type: int, default: 50, min: 0, max: 100, hint: "0 is left, 50 centre, 100 right. Only matters where the photo gets cropped to fit." }
+              - { label: "Vertical focus %", name: focalY, widget: number, value_type: int, default: 40, min: 0, max: 100, hint: "Lower keeps heads and faces in view. 40 suits most group photos." }
+
   # ---- Chapters (add, edit or reorder; the homepage count and map of states update from this) ----
   - name: chapters
     label: "Chapters"

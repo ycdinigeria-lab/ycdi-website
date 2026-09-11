@@ -54,14 +54,13 @@ eleventyExcludeFromCollections: true
       <div class="hero-media reveal-media">
         <div class="frame">
           <div class="hero-carousel" data-hero-carousel aria-roledescription="carousel" aria-label="YCDI programme photographs">
-            <img class="hc-slide is-active" src="https://res.cloudinary.com/djy83r6px/image/upload/w_1200,h_1050,c_fill,g_auto,f_auto,q_auto/v1766828679/ycdi-three_pu7ie8.webp" alt="Three smiling YCDI students together outside their school" width="1200" height="1050" fetchpriority="high" style="object-position:50% 40%">
-            <img class="hc-slide" src="assets/photos/hero-1.jpg" alt="YCDI students and team members with a guest at a school outreach in Agbor, Delta" width="1500" height="1000" loading="lazy" style="object-position:50% 40%">
-            <img class="hc-slide" src="assets/photos/hero-2.jpg" alt="A student in a green beret seated with classmates during a YCDI school programme" width="1600" height="720" loading="lazy" style="object-position:40% 42%">
-            <img class="hc-slide" src="assets/photos/hero-3.jpg" alt="YCDI students smiling and celebrating together at an outreach event" width="1600" height="1067" loading="lazy" style="object-position:50% 45%">
-            <img class="hc-slide" src="assets/photos/hero-4.jpg" alt="YCDI volunteers and facilitators together at a gathering" width="1500" height="844" loading="lazy" style="object-position:50% 40%">          </div>
-          <div class="hero-script">A brighter Nigeria<br>is possible</div>
+            {% for s in hero.slides %}
+            <img class="hc-slide{% if loop.first %} is-active{% endif %}" src="{{ s.image }}" alt="{{ s.alt }}"{% if loop.first %} fetchpriority="high"{% else %} loading="lazy"{% endif %} style="object-position:{{ s.focalX | default(50) }}% {{ s.focalY | default(40) }}%">
+            {% endfor %}
+          </div>
+          <div class="hero-script">{{ hero.script | nl2br | safe }}</div>
         </div>
-        <div class="cap">Young people. Real change. A greater tomorrow.</div>
+        <div class="cap">{{ hero.caption }}</div>
       </div>
     </div>
   </section>
