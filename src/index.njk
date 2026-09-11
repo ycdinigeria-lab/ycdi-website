@@ -53,7 +53,21 @@ eleventyExcludeFromCollections: true
       </div>
       <div class="hero-media reveal-media">
         <div class="frame">
-          <img src="https://res.cloudinary.com/djy83r6px/image/upload/w_1200,h_1050,c_fill,g_auto,f_auto,q_auto/v1766828679/ycdi-three_pu7ie8.webp" alt="Three smiling YCDI students together outside their school" width="1200" height="1050" fetchpriority="high">
+          <div class="hero-carousel" data-hero-carousel aria-roledescription="carousel" aria-label="YCDI programme photographs">
+            <img class="hc-slide is-active" src="https://res.cloudinary.com/djy83r6px/image/upload/w_1200,h_1050,c_fill,g_auto,f_auto,q_auto/v1766828679/ycdi-three_pu7ie8.webp" alt="Three smiling YCDI students together outside their school" width="1200" height="1050" fetchpriority="high" style="object-position:50% 40%">
+            <!--
+              To turn this into a moving carousel, add more real programme photographs here,
+              one <img class="hc-slide"> per photo. The controls, autoplay, dots, swipe and
+              keyboard support all switch on automatically once there is more than one slide.
+              Give every image a truthful alt description. Set object-position (x% y%) so faces
+              sit in frame; a lower second value keeps heads from being cropped.
+              Replace the paths below with real photos, then delete these comment markers:
+
+            <img class="hc-slide" src="assets/photos/REPLACE-1.jpg" alt="Describe what is happening in the photo" width="1200" height="900" loading="lazy" style="object-position:50% 38%">
+            <img class="hc-slide" src="assets/photos/REPLACE-2.jpg" alt="Describe what is happening in the photo" width="1200" height="900" loading="lazy" style="object-position:50% 42%">
+            <img class="hc-slide" src="assets/photos/REPLACE-3.jpg" alt="Describe what is happening in the photo" width="1200" height="900" loading="lazy" style="object-position:50% 40%">
+            -->
+          </div>
           <div class="hero-script">A brighter Nigeria<br>is possible</div>
         </div>
         <div class="cap">Young people. Real change. A greater tomorrow.</div>
@@ -63,10 +77,21 @@ eleventyExcludeFromCollections: true
 
   <section class="statbar">
     <div class="wrap">
-      <div class="stat"><div class="n" data-count-to="{{ chapters.items | length }}">{{ chapters.items | length }}</div><div class="bar"></div><div class="l">Chapters</div></div>
-      <div class="stat"><div class="n" data-count-to="{{ chapters.items | uniqueStates }}">{{ chapters.items | uniqueStates }}</div><div class="bar"></div><div class="l">States</div></div>
-      <div class="stat"><div class="n" data-count-to="{{ stats.reached }}" data-suffix="+">{{ stats.reached | thousands }}+</div><div class="bar"></div><div class="l">Young people reached</div></div>
-      <div class="stat"><div class="n" data-count-static>{{ stats.since }}</div><div class="bar"></div><div class="l">Serving since</div></div>
+      <div class="stat">
+        <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-2a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"/><path d="M12 12V8"/></svg></span>
+        <div class="n" data-count-to="{{ chapters.items | length }}">{{ chapters.items | length }}</div>
+        <div class="l">Chapters</div>
+      </div>
+      <div class="stat">
+        <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <div class="n" data-count-to="{{ chapters.items | uniqueStates }}">{{ chapters.items | uniqueStates }}</div>
+        <div class="l">States</div>
+      </div>
+      <div class="stat">
+        <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <div class="n" data-count-to="{{ stats.reached }}" data-suffix="+">{{ stats.reached | thousands }}+</div>
+        <div class="l">Young people reached</div>
+      </div>
     </div>
   </section>
 
