@@ -11,14 +11,14 @@
     {
       "image": "/assets/uploads/hero-2.jpg",
       "alt": "A student in a green beret seated with classmates during a YCDI school programme",
-      "focalX": 45,
-      "focalY": 42
+      "focalX": 40,
+      "focalY": 34
     },
     {
       "image": "/assets/photos/hero-3.jpg",
       "alt": "YCDI members smiling and celebrating together at a training event",
       "focalX": 50,
-      "focalY": 45
+      "focalY": 40
     }
   ]
 }
