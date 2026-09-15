@@ -76,8 +76,8 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.97);backdro
    eyebrow gets a short rule beside it. Both kept in brand blue, since YCDI reserves
    red for calls to action, not decoration. */
 .hero h1 .accent-red{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:600;color:var(--deepblue);letter-spacing:0;}
-.hero .eyebrow{display:flex;align-items:center;gap:12px;}
-.hero .eyebrow::before{content:"";flex:0 0 auto;width:26px;height:2px;background:var(--deepblue);}
+.hero .eyebrow{display:flex;align-items:center;gap:12px;color:var(--ink);}
+.hero .eyebrow::before{content:"";flex:0 0 auto;width:26px;height:2px;background:var(--red);}
 .hc-count{position:absolute;top:14px;right:16px;z-index:4;display:none;font-family:"Montserrat",sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5);}
 
 /* Hero photo carousel: slides stacked and cross-faded. With one slide it is just a
@@ -284,7 +284,7 @@ footer .wrap{padding-top:44px;padding-bottom:26px;}
 @media(max-width:980px){
   .hero-inner{grid-template-columns:1fr;gap:34px;padding:clamp(44px,9vw,58px) 0;}
   .hero .eyebrow{margin-bottom:18px;}
-  .hero h1{line-height:1.2;max-width:20ch;text-wrap:balance;}
+  .hero h1{line-height:1.1;max-width:16ch;text-wrap:balance;}
   .hero p.sub{max-width:50ch;margin:20px 0 30px;}
   .hero-actions{gap:12px;}
   /* Portrait hero image on mobile: a tall 4:5 frame, centred and capped so it
@@ -331,8 +331,8 @@ footer .wrap{padding-top:44px;padding-bottom:26px;}
   .hero .hero-actions .btn{width:auto;justify-content:center;padding:13px 22px;}
   .hero .hero-actions .btn-outline{border:0;background:none;padding:4px 2px;color:var(--deepblue);}
   .hero .hero-actions .btn-outline:hover{background:none;color:var(--red-deep);}
-  .hero h1{font-size:clamp(25px,6.6vw,31px);}
-  .hero p.sub{font-size:15.5px;}
+  .hero h1{font-size:clamp(37px,10.5vw,50px);line-height:1.04;letter-spacing:-.021em;max-width:none;}
+  .hero p.sub{font-size:16px;line-height:1.6;margin-top:18px;}
   .foot-top{flex-direction:column;}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important;}}
