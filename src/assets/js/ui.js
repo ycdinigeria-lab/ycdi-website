@@ -128,6 +128,15 @@
   root.appendChild(prev);
   root.appendChild(next);
 
+  // Numeric slide counter (01 / NN). Shown on small screens via CSS, hidden on desktop.
+  var counter = document.createElement("div");
+  counter.className = "hc-count";
+  counter.setAttribute("aria-hidden", "true");
+  function pad2(n) { return (n < 10 ? "0" : "") + n; }
+  function updateCount() { counter.textContent = pad2(index + 1) + " / " + pad2(slides.length); }
+  updateCount();
+  root.appendChild(counter);
+
   // Slide counter (01 / NN). Hidden by default, shown on small screens via CSS.
   var counter = document.createElement("div");
   counter.className = "hc-count";
