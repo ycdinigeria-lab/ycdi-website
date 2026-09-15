@@ -72,6 +72,13 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.97);backdro
 .hero-script{position:absolute;right:20px;top:58%;font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:600;color:#fff;font-size:clamp(18px,1.8vw,24px);text-shadow:0 2px 12px rgba(0,0,0,.45);line-height:1.2;text-align:right;}
 .hero-script::after{content:"";display:block;height:3px;width:70%;margin-left:30%;margin-top:6px;background:var(--yellow);border-radius:2px;}
 .hero-media .cap{margin-top:12px;text-align:right;font-size:13px;color:var(--muted);font-weight:600;}
+/* Editorial hero touches. The accent word gets a serif italic treatment, and the
+   eyebrow gets a short rule beside it. Both kept in brand blue, since YCDI reserves
+   red for calls to action, not decoration. */
+.hero h1 .accent-red{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:600;color:var(--deepblue);letter-spacing:0;}
+.hero .eyebrow{display:flex;align-items:center;gap:12px;}
+.hero .eyebrow::before{content:"";flex:0 0 auto;width:26px;height:2px;background:var(--deepblue);}
+.hc-count{position:absolute;top:14px;right:16px;z-index:4;display:none;font-family:"Montserrat",sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5);}
 
 /* Hero photo carousel: slides stacked and cross-faded. With one slide it is just a
    still image; JS adds dots, arrows, autoplay and swipe only when there are more. */
@@ -283,10 +290,14 @@ footer .wrap{padding-top:44px;padding-bottom:26px;}
   /* Portrait hero image on mobile: a tall 4:5 frame, centred and capped so it
      never dominates on tablets. Slides fill it with object-fit:cover and their
      own focal points, so faces stay in view instead of being stretched. */
-  .hero-media .frame{clip-path:none;aspect-ratio:4/5;max-width:460px;margin-inline:auto;border-radius:16px;box-shadow:0 20px 44px -26px rgba(45,2,9,.4);}
-  .hero-script{position:static;text-align:left;color:var(--ink);text-shadow:none;font-size:19px;margin-top:16px;max-width:460px;margin-inline:auto;}
-  .hero-script::after{margin-left:0;}
-  .hero-media .cap{text-align:left;margin-top:8px;max-width:460px;margin-inline:auto;}
+  .hero-media{display:flex;flex-direction:column;}
+  .hero-media .frame{clip-path:none;aspect-ratio:4/5;max-width:460px;margin:0 auto;border-radius:16px;box-shadow:0 20px 44px -26px rgba(45,2,9,.4);}
+  .hero-media .frame::after{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;background:linear-gradient(to top,rgba(20,2,4,.62),rgba(20,2,4,0) 44%);pointer-events:none;}
+  .hero-script{position:absolute;left:20px;right:20px;bottom:18px;z-index:3;margin:0;max-width:none;text-align:left;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.45);font-size:20px;}
+  .hero-script::after{margin-left:0;background:var(--yellow);}
+  .hero-media .cap{order:-1;text-align:left;margin:0 auto 14px;max-width:460px;}
+  .hc-count{display:block;}
+  .hc-dots{display:none;}
   .who .wrap,.who-lower,.rooted-inner,.stories-inner,.trust2-inner,.gallery-inner,.ways-inner,.final-inner,.cols2,.contact-grid{grid-template-columns:1fr;}
   .prog-grid{grid-template-columns:repeat(2,1fr);gap:26px;}
   .journey{grid-template-columns:1fr;gap:0;}
@@ -316,6 +327,10 @@ footer .wrap{padding-top:44px;padding-bottom:26px;}
   .stat:last-child{border-bottom:0;}
   .hero-actions{flex-direction:column;align-items:stretch;}
   .hero-actions .btn,.final-simple .hero-actions .btn{width:100%;justify-content:center;padding:14px 22px;}
+  .hero .hero-actions{flex-direction:row;flex-wrap:wrap;align-items:center;gap:14px 22px;}
+  .hero .hero-actions .btn{width:auto;justify-content:center;padding:13px 22px;}
+  .hero .hero-actions .btn-outline{border:0;background:none;padding:4px 2px;color:var(--deepblue);}
+  .hero .hero-actions .btn-outline:hover{background:none;color:var(--red-deep);}
   .hero h1{font-size:clamp(25px,6.6vw,31px);}
   .hero p.sub{font-size:15.5px;}
   .foot-top{flex-direction:column;}
