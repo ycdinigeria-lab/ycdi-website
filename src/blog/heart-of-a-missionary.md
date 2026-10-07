@@ -25,6 +25,42 @@ gallery:
     caption: Listening in
     alt: A student listening closely during a conference session
     showInMainGallery: true
+  - image: /assets/uploads/retreat-2026-worship.jpg
+    caption: Worship at the 2026 Missionaries’ Retreat
+    alt: Volunteers in worship, one with a hand lifted
+    showInMainGallery: true
+  - image: /assets/uploads/retreat-2026-prayer.jpg
+    caption: Praying together at the retreat
+    alt: A hall of volunteers praying with hands raised
+    showInMainGallery: true
+  - image: /assets/uploads/retreat-2026-speaker-at-lectern.jpg
+    caption: Teaching at the retreat
+    alt: A speaker at the lectern in front of the retreat banner
+    showInMainGallery: true
+  - image: /assets/uploads/retreat-2026-teaching.jpg
+    caption: A session in progress
+    alt: A speaker teaching in front of the retreat banner
+    showInMainGallery: true
+  - image: /assets/uploads/retreat-2026-delegates.jpg
+    caption: Taking notes
+    alt: Volunteers seated in rows, one writing notes
+    showInMainGallery: true
+  - image: /assets/uploads/retreat-2026-leading-the-room.jpg
+    caption: Leading from the front
+    alt: A woman leading a session at the front of the hall
+    showInMainGallery: true
+  - image: /assets/uploads/retreat-2026-keyboards.jpg
+    caption: The music team
+    alt: Two keyboard players at the retreat
+    showInMainGallery: true
+  - image: /assets/uploads/retreat-2026-drummer.jpg
+    caption: On the drums
+    alt: A drummer playing during worship
+    showInMainGallery: true
+  - image: /assets/uploads/retreat-2026-speaker-smiling.jpg
+    caption: A word from the lectern
+    alt: A speaker smiling at the lectern
+    showInMainGallery: true
 ---
 
 Every missionary story starts somewhere. This one starts with a conversation on a beach, between a risen Jesus and a disciple who had failed Him. It is one of the most tender exchanges in Scripture, and it is where the call to reach young people really begins.

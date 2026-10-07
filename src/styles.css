@@ -830,3 +830,6 @@ footer a:focus-visible{outline-color:var(--yellow);}
   .hero-full .eyebrow{letter-spacing:.16em;font-size:11px;}
   .hero-full .eyebrow::before,.hero-full .eyebrow::after{display:none;}
 }
+
+/* Gallery: keep faces in frame when a portrait photo is cropped to the landscape cell */
+.gcell img{object-position:50% 18%;}
