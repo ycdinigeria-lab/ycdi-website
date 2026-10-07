@@ -6,23 +6,26 @@ seoTitle: "Events | YCDI"
 seoDescription: "Conferences, prayer gatherings and the moments YCDI comes together across its chapters. See what is coming up next."
 eleventyExcludeFromCollections: true
 ---
+{% set up = events.items | upcomingEvents %}
+{% set past = events.items | pastEvents %}
 <main>
   <section class="pagehero">
     <div class="wrap">
-      <div class="crumb">Events</div>
+      <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> Events</nav>
       <h1>What's coming up.</h1>
       <p class="lead">Conferences, prayer gatherings and the moments we come together across the chapters. Here is where to find us next.</p>
     </div>
   </section>
 
+  {# Events are split by date when the site builds, then checked again in the visitor's
+     browser (assets/js/events.js), so an event leaves "Upcoming" the day after it happens
+     even if nobody has republished the site. #}
   <section class="section">
     <div class="wrap">
       <span class="kicker">Upcoming</span>
-      {% set up = events.items | upcomingEvents %}
-      {% if up | length %}
-      <div class="event-list">
+      <div class="event-list" data-events-upcoming>
         {% for e in up %}
-        <article class="event-card">
+        <article class="event-card" data-event-date="{{ e.date | isoDate }}">
           {% if e.image %}<div class="event-img"><img src="{{ e.image }}" alt="{{ e.title }}" loading="lazy"></div>{% endif %}
           <div class="event-body">
             <div class="event-date">{{ e.dateLabel or (e.date | readableDate) }}</div>
@@ -30,25 +33,22 @@ eleventyExcludeFromCollections: true
             {% if e.location %}<div class="event-loc">{{ e.location }}</div>{% endif %}
             <p>{{ e.summary }}</p>
             {% if e.note %}<p class="event-note">{{ e.note }}</p>{% endif %}
+            <p class="event-cta">{% if e.link %}<a class="textlink" href="{{ e.link }}">{{ e.linkLabel or "Find out more" }} <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h13M12 6l6 6-6 6"/></svg></a>{% else %}<a class="textlink" href="contact.html">Register interest <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h13M12 6l6 6-6 6"/></svg></a>{% endif %}</p>
           </div>
         </article>
         {% endfor %}
       </div>
-      {% else %}
-      <p class="prose">Nothing on the calendar just now. We are always planning the next gathering, so check back soon, or follow us on social media to hear about it first.</p>
-      {% endif %}
+      <p class="prose" data-events-empty{% if up | length %} hidden{% endif %}>Nothing on the calendar just now. We are always planning the next gathering, so check back soon, or follow us on social media to hear about it first.</p>
     </div>
   </section>
 
-  {% set past = events.items | pastEvents %}
-  {% if past | length %}
-  <section class="section bg-off">
+  <section class="section bg-off" data-events-past-section{% if not (past | length) %} hidden{% endif %}>
     <div class="wrap">
       <span class="kicker">Recently</span>
       <h2>Where we have been.</h2>
-      <div class="event-list past">
+      <div class="event-list past" data-events-past>
         {% for e in past %}
-        <article class="event-card">
+        <article class="event-card" data-event-date="{{ e.date | isoDate }}">
           <div class="event-body">
             <div class="event-date">{{ e.dateLabel or (e.date | readableDate) }}</div>
             <h3>{{ e.title }}</h3>
@@ -60,7 +60,6 @@ eleventyExcludeFromCollections: true
       </div>
     </div>
   </section>
-  {% endif %}
 
   <section class="section final-simple">
     <div class="wrap">
@@ -70,3 +69,16 @@ eleventyExcludeFromCollections: true
     </div>
   </section>
 </main>
+{% if up | length %}
+<script type="application/ld+json">[{% for e in up %}{{ {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": e.title,
+  "startDate": e.date | isoDate,
+  "description": e.summary,
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": { "@type": "Place", "name": e.location or "To be announced", "address": { "@type": "PostalAddress", "addressCountry": "NG" } },
+  "organizer": { "@type": "NGO", "name": site.fullName, "url": site.url + "/" }
+} | ldjson | safe }}{% if not loop.last %},{% endif %}{% endfor %}]</script>
+{% endif %}
+<script src="assets/js/events.js?v={{ build }}" defer></script>

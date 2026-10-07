@@ -5,7 +5,8 @@ module.exports = function (eleventyConfig) {
   // Pass through the existing static site, unchanged
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/styles.css": "styles.css" });
-  eleventyConfig.addPassthroughCopy({ "src/*.html": "." });
+  // about.html is now generated from about.njk so its chapter figures come from the Chapters list.
+  eleventyConfig.addPassthroughCopy({ "src/!(about).html": "." });
   eleventyConfig.addPassthroughCopy({ "admin": "admin" });
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
 
@@ -154,6 +155,35 @@ module.exports = function (eleventyConfig) {
     });
     return Object.keys(counts).sort().map((name) => ({ name, slug: catSlug(name), count: counts[name] }));
   });
+
+  // ============================================================
+  // Audit fixes: single-source figures, chapter pages, structured data
+  // ============================================================
+
+  // 7 -> "seven" (figures written into sentences); falls back to digits above twenty
+  const WORDS = ["zero","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty"];
+  eleventyConfig.addFilter("numWord", (n) => (WORDS[Number(n)] !== undefined ? WORDS[Number(n)] : String(n)));
+
+  // "Ilesa, Osun" -> "ilesa" (chapter page addresses) and "Edo State" -> "Edo" (matches the map)
+  const chapterSlug = (name) =>
+    String(name || "").split(",")[0].trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  eleventyConfig.addFilter("chapterSlug", chapterSlug);
+  const stateKey = (s) => String(s || "").replace(/\s+State$/i, "").trim();
+  eleventyConfig.addFilter("stateKey", stateKey);
+
+  // States that have chapters, each with a count: [{ name: "Edo", count: 2 }, ...]
+  eleventyConfig.addFilter("chapterStates", (items) => {
+    const counts = {};
+    (items || []).forEach((i) => { const k = stateKey(i.state); if (k) counts[k] = (counts[k] || 0) + 1; });
+    return Object.keys(counts).sort().map((name) => ({ name, count: counts[name] }));
+  });
+  eleventyConfig.addFilter("stateCount", (states, name) => {
+    const hit = (states || []).find((s) => s.name === name);
+    return hit ? hit.count : 0;
+  });
+
+  // Safe JSON for <script type="application/ld+json"> blocks
+  eleventyConfig.addFilter("ldjson", (obj) => JSON.stringify(obj).replace(/</g, "\\u003c"));
 
   return { dir: { input: "src", output: "_site", includes: "_includes", data: "_data" } };
 };

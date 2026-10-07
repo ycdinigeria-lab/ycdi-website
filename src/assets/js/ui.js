@@ -197,3 +197,56 @@
 
   start();
 })();
+
+
+/* Rooted and Rising journey (homepage). On wide screens the five stages become a
+   set of controls: hover, focus or click a stage to read more about it underneath.
+   On phones, and with JavaScript off, every stage simply shows its full text. */
+(function () {
+  "use strict";
+  var wrap = document.querySelector("[data-journey]");
+  var panel = document.querySelector("[data-journey-panel]");
+  if (!wrap || !panel || !window.matchMedia) return;
+  if (!window.matchMedia("(min-width: 981px)").matches) return;
+
+  var steps = Array.prototype.slice.call(wrap.querySelectorAll(".jstep"));
+  if (!steps.length) return;
+  var num = panel.querySelector(".jp-num");
+  var title = panel.querySelector(".jp-title");
+  var text = panel.querySelector(".jp-text");
+  if (!panel.id) panel.id = "journey-panel";
+
+  wrap.classList.add("is-interactive");
+  wrap.setAttribute("role", "tablist");
+  wrap.setAttribute("aria-label", "The five stages of Rooted and Rising");
+  panel.setAttribute("role", "tabpanel");
+  panel.removeAttribute("hidden");
+
+  function show(i, focus) {
+    steps.forEach(function (s, k) {
+      var on = k === i;
+      s.classList.toggle("is-active", on);
+      s.setAttribute("aria-selected", on ? "true" : "false");
+      s.setAttribute("tabindex", on ? "0" : "-1");
+    });
+    var s = steps[i];
+    var n = s.querySelector(".num"), h = s.querySelector("h4"), more = s.querySelector(".jmore");
+    num.textContent = n ? n.textContent : "";
+    title.textContent = h ? h.textContent : "";
+    text.textContent = more ? more.textContent : "";
+    if (focus) s.focus();
+  }
+
+  steps.forEach(function (s, i) {
+    s.setAttribute("role", "tab");
+    s.setAttribute("aria-controls", panel.id);
+    s.addEventListener("click", function () { show(i); });
+    s.addEventListener("mouseenter", function () { show(i); });
+    s.addEventListener("focus", function () { show(i); });
+    s.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { show((i + 1) % steps.length, true); e.preventDefault(); }
+      else if (e.key === "ArrowLeft") { show((i - 1 + steps.length) % steps.length, true); e.preventDefault(); }
+    });
+  });
+  show(0);
+})();

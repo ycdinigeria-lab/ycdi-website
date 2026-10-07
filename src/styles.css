@@ -712,3 +712,121 @@ footer a:focus-visible{outline-color:var(--yellow);}
 .morehead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;}
 .morehead h2{font-size:clamp(24px,2.8vw,32px);}
 .morepost .postgrid{margin-top:26px;}
+
+/* ============================================================
+   Website audit round, October 2026: tighter homepage, shorter
+   phone hero copy, interactive Rooted and Rising journey, events
+   links, chapter explorer and chapter pages.
+   ============================================================ */
+
+/* --- Homepage: a little less air between sections --- */
+.home .section{padding:clamp(44px,5.6vw,78px) 0;}
+.home .who-lower{grid-template-columns:1fr;}
+@media(max-width:980px){
+  .home .who .photo{aspect-ratio:4/3;}
+}
+@media(max-width:560px){
+  /* Chapters: two compact cards a row instead of four tall ones */
+  .home .chgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+  .home .chcard .meta{padding:12px 14px;}
+  .home .chcard h3{font-size:15.5px;}
+  .home .chcard .st{font-size:12px;}
+  .home .chcard .ar{display:none;}
+  /* Blog: compact rows with a small photo beside the text */
+  .home .postcard{flex-direction:row;align-items:stretch;}
+  .home .postcard .pthumb{order:0;flex:0 0 108px;aspect-ratio:auto;border-bottom:0;border-right:1px solid var(--line);}
+  .home .postcard .in{padding:16px;}
+  .home .postcard h3{font-size:16.5px;margin-bottom:8px;}
+  .home .postcard p{display:none;}
+  .home .postcard .pmeta{font-size:12px;}
+  .home .postgrid{gap:12px;margin-top:26px;}
+  .home .stories .lede,.home .gallery .lede{display:none;}
+}
+
+/* --- Hero: one short supporting line on phones --- */
+.hero-full .sub-short{display:none;}
+@media(max-width:700px){
+  .hero-full .sub-long{display:none;}
+  .hero-full .sub-short{display:block;font-size:16.5px;max-width:30ch;}
+}
+
+/* --- Rooted and Rising: stages as controls on wide screens --- */
+.home .jstep .jmore{display:none;}
+.jpanel{max-width:640px;margin:34px auto 0;padding:24px 28px;background:#fff;border:1px solid var(--line);border-radius:8px;text-align:center;min-height:132px;}
+.jpanel .jp-num{display:block;font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:600;font-size:22px;color:var(--deepblue);line-height:1;}
+.jpanel .jp-title{font-size:20px;margin:8px 0 6px;}
+.jpanel .jp-text{margin:0;font-size:16.5px;color:var(--text);}
+.journey.is-interactive .jstep{cursor:pointer;border-radius:8px;padding:6px 4px 10px;}
+.journey.is-interactive .jstep > p{display:none;}
+.journey.is-interactive .jstep .circle{transition:background .15s ease,color .15s ease,box-shadow .15s ease;background:#fff;color:var(--deepblue);box-shadow:inset 0 0 0 2px var(--deepblue);}
+.journey.is-interactive .jstep.is-active .circle{background:var(--deepblue);color:#fff;box-shadow:0 0 0 5px rgba(7,91,125,.16);}
+.journey.is-interactive .jstep.is-active h4{color:var(--deepblue);}
+.journey.is-interactive::before{top:34px;}
+@media(max-width:980px){
+  .home .jstep .jmore{display:block;margin-top:4px;}
+  .home .jstep > p:not(.jmore){display:none;}
+  .jpanel{display:none;}
+}
+
+/* --- Ways in: five routes --- */
+.home .ways .waygrid{grid-template-columns:repeat(5,1fr);}
+@media(max-width:1100px){.home .ways .waygrid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:980px){.home .ways .waygrid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.home .ways .waygrid{grid-template-columns:1fr;}}
+
+/* --- Events: sign-up link --- */
+.event-card .event-body .event-cta{margin-top:14px;}
+
+/* --- Chapters: explorer --- */
+.chexplore h2{max-width:22ch;}
+.chhint{color:#63646a;margin:10px 0 22px;}
+.statechips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(24px,3vw,36px);}
+.statechip{min-height:44px;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid var(--line);border-radius:5px;background:#fff;color:var(--ink);font-family:"Montserrat",sans-serif;font-weight:700;font-size:13.5px;cursor:pointer;transition:border-color .15s ease,color .15s ease;}
+.statechip:hover{border-color:var(--deepblue);color:var(--deepblue);}
+.statechip.is-active{background:var(--deepblue);border-color:var(--deepblue);color:#fff;}
+.statechip .n{font-weight:600;font-size:12px;opacity:.75;}
+.chexplore-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(24px,4vw,52px);align-items:start;}
+.ngmap{position:sticky;top:96px;}
+.ngmap svg{width:100%;height:auto;display:block;}
+.ngmap path{fill:#e3e7ea;stroke:#fff;stroke-width:1;}
+.ngmap path.has{fill:#7fb3c8;cursor:pointer;transition:fill .15s ease;}
+.ngmap path.has:hover{fill:#3f8aa8;}
+.ngmap path.has.is-active{fill:var(--deepblue);}
+.mapkey{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-size:13.5px;color:var(--text);}
+.mapkey .sw{width:14px;height:14px;border-radius:3px;background:#7fb3c8;}
+.mapcredit{margin:4px 0 0;font-size:12px;color:#63646a;}
+.chlist{display:grid;gap:16px;}
+.chrow{border:1px solid var(--line);border-radius:8px;background:#fff;padding:22px 24px;}
+.chrow[hidden]{display:none;}
+.chrow h3{font-size:22px;margin:6px 0 4px;}
+.chrow .hl{margin:0;color:var(--text);}
+.chfacts{margin:16px 0 0;display:grid;gap:10px;}
+.chfacts div{display:grid;grid-template-columns:104px 1fr;gap:12px;font-size:14.5px;}
+.chfacts dt{font-family:"Montserrat",sans-serif;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#63646a;padding-top:3px;}
+.chfacts dd{margin:0;color:var(--ink);}
+.chfacts.stacked div{grid-template-columns:1fr;gap:2px;}
+.chrow-links{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:18px;}
+.chrow-links .textlink{min-height:32px;}
+@media(max-width:860px){
+  .chexplore-grid{grid-template-columns:1fr;}
+  .ngmap{position:static;max-width:440px;margin:0 auto;}
+  .chfacts div{grid-template-columns:1fr;gap:2px;}
+}
+
+/* --- Chapter pages --- */
+.chpage{grid-template-columns:1.5fr 1fr;}
+.chpage h2{font-size:clamp(22px,2.4vw,28px);margin-bottom:14px;}
+.chphoto{margin:0 0 26px;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:var(--offwhite);}
+.chphoto img{width:100%;height:100%;object-fit:cover;}
+.chpage .factbox .btn{margin-top:22px;}
+.otherch{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:22px;}
+.otherch a{display:flex;flex-direction:column;gap:2px;padding:16px 18px;min-height:44px;border:1px solid var(--line);border-radius:8px;background:#fff;text-decoration:none;transition:border-color .15s ease;}
+.otherch a:hover{border-color:var(--deepblue);}
+.otherch b{font-family:"Montserrat",sans-serif;font-size:16px;color:var(--ink);}
+.otherch span{font-size:13px;color:#63646a;}
+@media(max-width:980px){.chpage{grid-template-columns:1fr;}}
+.chpage .factbox h4{color:var(--ink);}
+@media(max-width:560px){
+  .hero-full .eyebrow{letter-spacing:.16em;font-size:11px;}
+  .hero-full .eyebrow::before,.hero-full .eyebrow::after{display:none;}
+}

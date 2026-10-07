@@ -12,6 +12,9 @@ eleventyExcludeFromCollections: true
   {% for c in collections.postCategories %}
   <url><loc>{{ site.url }}/blog-category-{{ c.slug }}</loc></url>
   {% endfor %}
+  {% for c in chapters.items %}
+  <url><loc>{{ site.url }}/chapter-{{ c.name | chapterSlug }}</loc></url>
+  {% endfor %}
   {% for post in collections.posts %}
   <url><loc>{{ site.url }}{{ post.url | cleanUrl }}</loc><lastmod>{{ (post.data.updated or post.date) | isoDate }}</lastmod></url>
   {% endfor %}

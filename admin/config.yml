@@ -155,6 +155,7 @@ collections:
               - { label: "Quote", name: quote, widget: text }
               - { label: "Name", name: name, widget: string }
               - { label: "Detail", name: detail, widget: string, required: false, hint: "e.g. YCDI Alumna, Idia College, Benin" }
+              - { label: "Who is speaking", name: group, widget: select, required: false, options: ["Student", "Alumni", "Parent", "Teacher", "School administrator", "Volunteer", "Partner"], hint: "Helps us keep a balance of voices. Real quotes only, with the person's permission." }
               - { label: "Photo (optional)", name: photo, widget: image, required: false, hint: "Real person, with permission. Leave empty to show a neutral placeholder." }
 
   # ---- Homepage numbers that cannot be counted automatically ----
@@ -209,3 +210,5 @@ collections:
               - { label: "Summary", name: summary, widget: text }
               - { label: "Photo (optional)", name: image, widget: image, required: false }
               - { label: "Small note (optional)", name: note, widget: string, required: false, hint: "e.g. Details to be confirmed." }
+              - { label: "Link (optional)", name: link, widget: string, required: false, hint: "A registration form or page for this event. Leave empty and upcoming events show a 'Register interest' link to the Contact page." }
+              - { label: "Link text (optional)", name: linkLabel, widget: string, required: false, hint: "e.g. Register now. Only used when a link is set." }

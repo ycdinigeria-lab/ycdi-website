@@ -1,0 +1,63 @@
+---
+layout: base.njk
+pagination:
+  data: chapters.items
+  size: 1
+  alias: c
+permalink: "chapter-{{ c.name | chapterSlug }}.html"
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "YCDI {{ c.name | before(',') }} chapter | {{ c.state }}"
+  seoDescription: "{{ c.headline }} The story of the YCDI {{ c.name | before(',') }} chapter in {{ c.state }}, its schools and its people."
+  featuredImage: "{{ c.image }}"
+---
+{% set short = c.name | before(',') %}
+<main>
+  <section class="pagehero">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> <a href="chapters.html">Our chapters</a> <span aria-hidden="true">/</span> {{ short }}</nav>
+      <h1>{{ c.headline }}</h1>
+      <p class="lead">YCDI {{ short }}, {{ c.state }}{% if c.since %} &middot; {{ c.since }}{% endif %}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap cols2 chpage">
+      <div class="prose">
+        {% if c.image %}<figure class="chphoto"><img src="{{ c.image }}" alt="YCDI {{ short }} chapter" width="1000" height="625"></figure>{% endif %}
+        <h2>The {{ short }} story</h2>
+        {{ c.story | paragraphs | safe }}
+      </div>
+      <aside class="factbox" aria-label="About this chapter">
+        <h4>YCDI {{ short }}</h4>
+        <dl class="chfacts stacked">
+          <div><dt>State</dt><dd>{{ c.state }}</dd></div>
+          {% if c.since %}<div><dt>Serving</dt><dd>{{ c.since }}</dd></div>{% endif %}
+          {% if c.coordinator %}<div><dt>Coordinator</dt><dd>{{ c.coordinator }}</dd></div>{% endif %}
+          {% if c.volunteers %}<div><dt>Volunteers</dt><dd>{{ c.volunteers }}</dd></div>{% endif %}
+          {% if c.schools %}<div><dt>Schools</dt><dd>{{ c.schools }}</dd></div>{% endif %}
+        </dl>
+        <a class="btn btn-donate" href="get-involved.html#volunteer">Volunteer in {{ short }}</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section bg-off">
+    <div class="wrap">
+      <h2 class="blogsub">Our other chapters</h2>
+      <div class="otherch">
+        {% for o in chapters.items %}{% if o.name != c.name %}
+        <a href="chapter-{{ o.name | chapterSlug }}.html"><b>{{ o.name | before(',') }}</b><span>{{ o.state }}</span></a>
+        {% endif %}{% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section final-simple">
+    <div class="wrap">
+      <h2>Is there a chapter near you?</h2>
+      <p>We are always looking for volunteers to strengthen existing chapters and help open new ones. If you would like to be part of the work in your area, reach out.</p>
+      <div class="hero-actions"><a class="btn btn-white" href="get-involved.html#volunteer">Volunteer with us</a><a class="btn btn-ghost-white" href="contact.html">Contact us</a></div>
+    </div>
+  </section>
+</main>
