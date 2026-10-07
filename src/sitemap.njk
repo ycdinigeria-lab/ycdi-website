@@ -1,0 +1,18 @@
+---
+permalink: sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{ site.url }}/</loc></url>
+  {% for p in staticPages %}
+  <url><loc>{{ site.url }}/{{ p }}</loc></url>
+  {% endfor %}
+  <url><loc>{{ site.url }}/blog</loc>{% if collections.posts.length %}<lastmod>{{ collections.posts[0].date | isoDate }}</lastmod>{% endif %}</url>
+  {% for c in collections.postCategories %}
+  <url><loc>{{ site.url }}/blog-category-{{ c.slug }}</loc></url>
+  {% endfor %}
+  {% for post in collections.posts %}
+  <url><loc>{{ site.url }}{{ post.url | cleanUrl }}</loc><lastmod>{{ (post.data.updated or post.date) | isoDate }}</lastmod></url>
+  {% endfor %}
+</urlset>

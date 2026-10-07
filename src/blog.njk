@@ -1,24 +1,64 @@
 ---
 layout: base.njk
-title: "Blog | Notes from the field | YCDI"
 seoDescription: "Teaching, reflections and lessons from YCDI sessions, conferences and school outreach."
-permalink: blog.html
+pagination:
+  data: collections.posts
+  size: 10
+  alias: pagePosts
+  generatePageOnEmptyData: true
+permalink: "blog{% if pagination.pageNumber > 0 %}-page-{{ pagination.pageNumber + 1 }}{% endif %}.html"
+eleventyComputed:
+  title: "Blog{% if pagination.pageNumber > 0 %}, page {{ pagination.pageNumber + 1 }}{% endif %} | Notes from the field | YCDI"
 ---
+{% set firstPage = pagination.pageNumber == 0 %}
 <section class="pagehero">
   <div class="wrap">
-    <div class="crumb">Blog</div>
+    <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> Blog</nav>
     <h1>Notes from the field.</h1>
     <p class="lead">Teaching, reflections and hard-won lessons from YCDI sessions, conferences and school outreach.</p>
   </div>
 </section>
-<section class="section">
+
+<section class="section blogindex">
   <div class="wrap">
+    {% include "blognav.njk" %}
+
+    {% if not pagePosts.length %}
+    <p class="prose" style="color:var(--muted);">No posts yet. New posts published from the admin will appear here.</p>
+    {% endif %}
+
+    {% if firstPage and pagePosts.length %}
+    {% set lead = pagePosts[0] %}
+    <a class="featpost" href="{{ lead.url }}">
+      {% if lead.data.featuredImage %}<div class="fimg"><img src="{{ lead.data.featuredImage }}" alt="{{ lead.data.featuredImageAlt or '' }}" width="960" height="640" fetchpriority="high"></div>{% endif %}
+      <div class="ftext">
+        <span class="tag">Latest <span aria-hidden="true">&middot;</span> {{ lead.data.category or "General" }}</span>
+        <h2>{{ lead.data.title }}</h2>
+        <p>{{ lead.data.excerpt }}</p>
+        <span class="pmeta">{% if lead.data.author %}{{ lead.data.author }}<span aria-hidden="true">&middot;</span>{% endif %}<time datetime="{{ lead.date | isoDate }}">{{ lead.date | readableDate }}</time><span aria-hidden="true">&middot;</span>{{ lead.inputPath | readingTime }} min read</span>
+        <span class="go">Read article <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h13M12 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+    {% endif %}
+
+    {% set startAt = 1 if firstPage else 0 %}
+    {% if pagePosts.length > startAt %}
+    <h2 class="blogsub">{% if firstPage %}More articles{% else %}Articles{% endif %}</h2>
     <div class="postgrid">
-      {% for post in collections.posts %}
-      <a class="postcard" href="{{ post.url }}"><div class="strip"></div><div class="in"><span class="tag">{{ post.data.category }}</span><h3>{{ post.data.title }}</h3><p>{{ post.data.excerpt }}</p><span class="go">Read article</span></div>{% if post.data.featuredImage %}<div class="pthumb"><img src="{{ post.data.featuredImage }}" alt="{{ post.data.featuredImageAlt or post.data.title }}" loading="lazy"></div>{% endif %}</a>
-      {% else %}
-      <p class="prose" style="color:var(--muted);">No posts yet. New posts published from the admin will appear here.</p>
-      {% endfor %}
+      {% for post in pagePosts %}{% if loop.index0 >= startAt %}
+      {% include "postcard.njk" %}
+      {% endif %}{% endfor %}
     </div>
+    {% endif %}
+
+    {% if pagination.pages.length > 1 %}
+    <nav class="pager" aria-label="Blog pages">
+      {% if pagination.href.previous %}<a class="btn btn-outline" href="{{ pagination.href.previous }}" rel="prev">Newer posts</a>{% else %}<span></span>{% endif %}
+      <span class="pcount">Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}</span>
+      {% if pagination.href.next %}<a class="btn btn-outline" href="{{ pagination.href.next }}" rel="next">Older posts</a>{% else %}<span></span>{% endif %}
+    </nav>
+    {% endif %}
+
+    <p class="feednote">Follow new posts in a feed reader: <a href="feed.xml">YCDI Blog feed</a></p>
   </div>
 </section>

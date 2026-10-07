@@ -1,0 +1,10 @@
+{# One blog card, shared by the homepage, the blog index and the category pages. Expects `post`. #}
+<a class="postcard" href="{{ post.url }}">
+  {% if post.data.featuredImage %}<div class="pthumb"><img src="{{ post.data.featuredImage }}" alt="{{ post.data.featuredImageAlt or '' }}" loading="lazy" width="640" height="400"></div>{% else %}<div class="strip"></div>{% endif %}
+  <div class="in">
+    <span class="tag">{{ post.data.category or "General" }}</span>
+    <h3>{{ post.data.title }}</h3>
+    <p>{{ post.data.excerpt }}</p>
+    <span class="pmeta"><time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time><span aria-hidden="true">&middot;</span>{{ post.inputPath | readingTime }} min read</span>
+  </div>
+</a>

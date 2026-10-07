@@ -27,14 +27,14 @@ Biblical productivity is different. It is not about doing everything. It is abou
 >
 > Romans 12:2 (KJV)
 
-### It starts in the mind
+## It starts in the mind
 
 As a man thinks, so is he. Much of what limits us is not circumstance but mindset, the quiet voice that says people like you do not get to do things like that. The panel pushed back hard on that lie. We have the mind of Christ, a mind of faith, not of negativity. Fill it with what is true, noble and of good report, and your work changes.
 
-### Trust the timing
+## Trust the timing
 
 Sometimes the delay is the lesson. When gifts and opportunities seem slow to arrive, God is often building patience and character first, so that when the capacity comes, we carry it humbly. Waiting well is part of working well.
 
-### Keep your peace, and stay where you are sent
+## Keep your peace, and stay where you are sent
 
 One panellist described walking away from a place that looked good on paper but cost him his peace, because he knew he was meant to be reaching young people at home. Productivity that lasts is not measured by how busy you look. It is measured by faithfulness to what God actually asked of you.

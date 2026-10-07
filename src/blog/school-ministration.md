@@ -25,19 +25,19 @@ Anyone who has done school outreach for long knows the feeling of a door closing
 >
 > Ephesians 6:17 (KJV)
 
-### Do not take rejection personally
+## Do not take rejection personally
 
 The helmet of salvation guards the mind. When a school turns you away, that is not a verdict on your worth or your calling. It is one door, on one day. Keep your head, and keep your peace.
 
-### Win trust, and meet a need
+## Win trust, and meet a need
 
 Doors often open when a school sees that you have come to give, not to take. One volunteer noticed a school short of furniture, arranged a few benches, and carried them in. The principal's whole posture changed. Small, honest acts of service open doors that arguments never will, and they keep those doors open.
 
-### Engage wisely and lawfully
+## Engage wisely and lawfully
 
 Work with the school's authorities, not around them. Respect their rules, honour their process, and you build the kind of trust that lasts beyond a single term.
 
-### Persevere
+## Persevere
 
 Joseph was rejected before he was promoted. A no today is not a no forever. The school that turned you away this time may welcome you the next. Keep knocking.
 

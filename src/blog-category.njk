@@ -1,0 +1,31 @@
+---
+layout: base.njk
+pagination:
+  data: collections.postCategories
+  size: 1
+  alias: cat
+permalink: "blog-category-{{ cat.slug }}.html"
+eleventyComputed:
+  title: "{{ cat.name }} | YCDI Blog"
+  seoDescription: "YCDI blog posts on {{ cat.name }}: teaching, reflections and lessons from the field."
+---
+{% set activeCat = cat.name %}
+<section class="pagehero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> <a href="blog.html">Blog</a> <span aria-hidden="true">/</span> {{ cat.name }}</nav>
+    <h1>{{ cat.name }}</h1>
+    <p class="lead">{{ cat.count }} {% if cat.count == 1 %}post{% else %}posts{% endif %} in this category.</p>
+  </div>
+</section>
+
+<section class="section blogindex">
+  <div class="wrap">
+    {% include "blognav.njk" %}
+    <h2 class="sr-only">Articles</h2>
+    <div class="postgrid">
+      {% for post in collections.posts | inCategory(cat.name) %}
+      {% include "postcard.njk" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

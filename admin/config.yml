@@ -26,11 +26,12 @@ collections:
       - { label: "Title", name: title, widget: string }
       - { label: "Author", name: author, widget: string, default: "YCDI Team" }
       - { label: "Publication date", name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Last updated (optional)", name: updated, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", required: false, default: "", hint: "Only fill this in when you make a real change to a post after publishing. It shows as 'Updated' beside the date." }
       - { label: "Category", name: category, widget: select, options: ["Discipleship","School Outreach","Leadership","Conferences","Scholarships","Community","General"], default: "General" }
       - { label: "Tags", name: tags, widget: list, required: false }
-      - { label: "Excerpt (short summary for cards)", name: excerpt, widget: text }
-      - { label: "Featured image", name: featuredImage, widget: image, required: false }
-      - { label: "Featured image alt text", name: featuredImageAlt, widget: string, required: false }
+      - { label: "Excerpt (short summary for cards)", name: excerpt, widget: text, hint: "One or two sentences, about 150 characters. Shown on the blog cards, at the top of the post, and in search and social previews." }
+      - { label: "Featured image", name: featuredImage, widget: image, required: false, hint: "A landscape photo works best, around 1600px wide and under 300KB. It is cropped to fit, so keep faces in the upper half." }
+      - { label: "Featured image alt text", name: featuredImageAlt, widget: string, required: false, hint: "Describe what is in the photo in one short sentence, for people using screen readers." }
       - { label: "Published", name: published, widget: boolean, default: true, hint: "Untick to keep this as a draft (it will not appear on the site)." }
       - label: "Photo gallery"
         name: gallery
@@ -45,7 +46,7 @@ collections:
           - { label: "Show in main gallery", name: showInMainGallery, widget: boolean, default: false }
       - { label: "SEO title (optional)", name: seoTitle, widget: string, required: false }
       - { label: "SEO meta description (optional)", name: seoDescription, widget: text, required: false }
-      - { label: "Body", name: body, widget: markdown }
+      - { label: "Body", name: body, widget: markdown, hint: "Use Heading 2 for section headings and Heading 3 for points inside a section. For Scripture, use a quote block and put the reference on its own line at the end, e.g. Romans 12:2 (KJV)." }
 
   # ---- Homepage hero (the photo carousel and the two lines of text with it) ----
   - name: hero

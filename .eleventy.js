@@ -97,5 +97,63 @@ module.exports = function (eleventyConfig) {
       .sort((a, b) => new Date(b.date) - new Date(a.date))
   );
 
+
+  // ============================================================
+  // Blog: dates, reading time, categories, related posts, clean URLs
+  // ============================================================
+  const fs = require("fs");
+
+  // 2026-01-20 (for <time datetime> and the sitemap) and full ISO (feed, meta tags)
+  eleventyConfig.addFilter("isoDate", (d) => (d ? new Date(d) : new Date()).toISOString().slice(0, 10));
+  eleventyConfig.addFilter("isoDateTime", (d) => (d ? new Date(d) : new Date()).toISOString());
+
+  // Minutes to read a post, from its Markdown file (about 200 words a minute, never under 1)
+  const readCache = {};
+  eleventyConfig.addFilter("readingTime", (inputPath) => {
+    if (!inputPath) return 1;
+    if (readCache[inputPath]) return readCache[inputPath];
+    let n = 1;
+    try {
+      const raw = fs.readFileSync(inputPath, "utf8").replace(/^---[\s\S]*?---/, "");
+      const words = raw.replace(/<[^>]*>/g, " ").replace(/[#>*_`\[\]()!-]/g, " ").split(/\s+/).filter(Boolean).length;
+      n = Math.max(1, Math.ceil(words / 200));
+    } catch (e) { n = 1; }
+    readCache[inputPath] = n;
+    return n;
+  });
+
+  // "School Outreach" -> "school-outreach" (category page addresses)
+  const catSlug = (s) =>
+    String(s || "General").toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  eleventyConfig.addFilter("catSlug", catSlug);
+
+  // Posts in one category
+  eleventyConfig.addFilter("inCategory", (posts, name) =>
+    (posts || []).filter((p) => (p.data.category || "General") === name)
+  );
+
+  // Up to n other posts: same category first, then the most recent
+  eleventyConfig.addFilter("relatedPosts", (posts, url, category, n) => {
+    const others = (posts || []).filter((p) => p.url !== url);
+    const same = others.filter((p) => (p.data.category || "General") === (category || "General"));
+    const rest = others.filter((p) => !same.includes(p));
+    return same.concat(rest).slice(0, n || 3);
+  });
+
+  // "/blog-x.html" -> "/blog-x", "/index.html" -> "/" (the address Netlify actually serves)
+  eleventyConfig.addFilter("cleanUrl", (u) =>
+    String(u || "/").replace(/\/index\.html$/, "/").replace(/\.html$/, "")
+  );
+
+  // Categories that have at least one published post, with a count, in A to Z order
+  eleventyConfig.addCollection("postCategories", (c) => {
+    const counts = {};
+    c.getFilteredByGlob("src/blog/*.md").filter(live).forEach((p) => {
+      const name = p.data.category || "General";
+      counts[name] = (counts[name] || 0) + 1;
+    });
+    return Object.keys(counts).sort().map((name) => ({ name, slug: catSlug(name), count: counts[name] }));
+  });
+
   return { dir: { input: "src", output: "_site", includes: "_includes", data: "_data" } };
 };

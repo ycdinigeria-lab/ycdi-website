@@ -1,0 +1,9 @@
+{# Category links for the blog index and category pages. Set `activeCat` to highlight one. #}
+{% if collections.postCategories.length > 1 %}
+<nav class="catnav" aria-label="Blog categories">
+  <a href="blog.html"{% if not activeCat %} class="is-active" aria-current="page"{% endif %}>All posts</a>
+  {% for c in collections.postCategories %}
+  <a href="blog-category-{{ c.slug }}.html"{% if activeCat == c.name %} class="is-active" aria-current="page"{% endif %}>{{ c.name }} <span class="n">{{ c.count }}</span></a>
+  {% endfor %}
+</nav>
+{% endif %}
