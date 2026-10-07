@@ -10,17 +10,21 @@ excerpt: A look at the quiet conversation between Jesus and Peter in John 21, an
 seoTitle: The Heart of a Missionary | YCDI Blog
 seoDescription: A reflection on John 21 and the love that stands behind every missionary calling.
 featuredImage: /assets/photos/gallery-2.jpg
-featuredImageAlt: A YCDI worship and discipleship gathering
+featuredImageAlt: A facilitator leading students in a hall at a YCDI conference
 published: true
 gallery:
   - image: /assets/photos/gallery-1.jpg
-    caption: A school session in full swing
-    alt: YCDI students in a school session
+    caption: Following along in a conference session
+    alt: Students seated in a hall, following a session with printed notes
     showInMainGallery: true
   - image: /assets/photos/gallery-3.jpg
-    caption: Students together after the meeting
-    alt: YCDI students smiling together
-    showInMainGallery: false
+    caption: Laughter in the middle of a session
+    alt: Students laughing together during a session
+    showInMainGallery: true
+  - image: /assets/uploads/conference-student-listening.jpg
+    caption: Listening in
+    alt: A student listening closely during a conference session
+    showInMainGallery: true
 ---
 
 Every missionary story starts somewhere. This one starts with a conversation on a beach, between a risen Jesus and a disciple who had failed Him. It is one of the most tender exchanges in Scripture, and it is where the call to reach young people really begins.

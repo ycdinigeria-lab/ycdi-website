@@ -10,12 +10,16 @@ excerpt: What to do when a school door closes. Practical, prayerful wisdom for r
 seoTitle: Challenges in School Ministration | YCDI Blog
 seoDescription: Practical, prayerful wisdom for reaching students when school doors close.
 featuredImage: /assets/photos/gallery-5.jpg
-featuredImageAlt: A YCDI school outreach
+featuredImageAlt: Students in uniform with YCDI volunteers outside a school building
 published: true
 gallery:
   - image: /assets/photos/gallery-6.jpg
     caption: Volunteers with students
-    alt: YCDI volunteers with students
+    alt: YCDI volunteers standing with a group of students
+    showInMainGallery: true
+  - image: /assets/uploads/conference-volunteer-team.jpg
+    caption: The volunteer team
+    alt: YCDI volunteers standing together outside a school
     showInMainGallery: true
 ---
 

@@ -10,12 +10,16 @@ excerpt: Biblical productivity is not hustle or burnout. It is faithful stewards
 seoTitle: Productivity, the YCDI Way | YCDI Blog
 seoDescription: Biblical productivity as faithful stewardship, not hustle or burnout.
 featuredImage: /assets/photos/gallery-7.jpg
-featuredImageAlt: A YCDI conference session
+featuredImageAlt: A speaker teaching at a YCDI conference
 published: true
 gallery:
   - image: /assets/photos/gallery-8.jpg
-    caption: Mentoring one to one
-    alt: YCDI mentoring a student
+    caption: A small-group discussion
+    alt: Students seated in a circle for a small-group discussion
+    showInMainGallery: true
+  - image: /assets/uploads/conference-volunteers-talking.jpg
+    caption: Volunteers in conversation
+    alt: Two volunteers talking during a conference
     showInMainGallery: true
 ---
 
