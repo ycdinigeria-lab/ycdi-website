@@ -4,28 +4,47 @@ title: "Gallery | YCDI"
 seoDescription: "Moments from YCDI school fellowships, conferences, mentoring and community outreach."
 permalink: gallery.html
 ---
+{% set items = collections.galleryItems %}
+{% set total = items | length %}
 <section class="pagehero">
   <div class="wrap">
-    <div class="crumb">Gallery</div>
+    <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> Gallery</nav>
     <h1>The faces behind the work.</h1>
     <p class="lead">Moments from school fellowships, conferences, mentoring and community outreach across our chapters.</p>
   </div>
 </section>
-<section class="section">
+
+<section class="section pgsection">
   <div class="wrap">
-    {% if collections.galleryCategories.length %}
-    <div class="galfilter">
-      <button class="galbtn is-active" data-filter="all">All</button>
-      {% for cat in collections.galleryCategories %}<button class="galbtn" data-filter="{{ cat }}">{{ cat }}</button>{% endfor %}
+    {% if total %}
+    <div class="pg-bar">
+      {% if collections.galleryCategories.length > 1 %}
+      <div class="pg-filter" role="group" aria-label="Filter photos by category">
+        <button type="button" class="pg-chip is-active" data-filter="all" aria-pressed="true">All <span class="n">{{ total }}</span></button>
+        {% for cat in collections.galleryCategories %}
+        <button type="button" class="pg-chip" data-filter="{{ cat }}" aria-pressed="false">{{ cat }} <span class="n">{{ items | inGalleryCategory(cat) }}</span></button>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <p class="pg-count" data-pg-count aria-live="polite">{{ total }} {% if total == 1 %}photo{% else %}photos{% endif %}</p>
     </div>
-    {% endif %}
-    <div class="galpage" data-lightbox>
-      {% for g in collections.galleryItems %}
-      <figure class="gcell" data-category="{{ g.category }}"><img src="{{ g.image }}" alt="{{ g.alt }}" loading="lazy" data-caption="{{ g.caption }}">{% if g.caption %}<figcaption>{{ g.caption }} <a href="{{ g.postUrl }}">{{ g.postTitle }}</a></figcaption>{% endif %}</figure>
-      {% else %}
+
+    <ul class="pg" data-lightbox>
+      {% for g in items %}{% set sz = g.image | imgSize %}
+      <li class="pg-item" data-category="{{ g.category }}">
+        <figure>
+          <a class="pg-link" href="{{ g.image }}" data-lb data-caption="{{ g.caption }}" data-story="{{ g.postUrl }}" data-story-title="{{ g.postTitle }}" aria-label="View larger: {{ g.alt }}">
+            <img src="{{ g.image }}" alt="{{ g.alt }}" loading="{% if loop.index0 < 6 %}eager{% else %}lazy{% endif %}" decoding="async"{% if sz %} width="{{ sz.w }}" height="{{ sz.h }}"{% endif %}>
+            <span class="pg-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          </a>
+          <figcaption>{% if g.caption %}<span class="cap">{{ g.caption }}</span>{% endif %}<a class="src" href="{{ g.postUrl }}">{{ g.postTitle }}</a></figcaption>
+        </figure>
+      </li>
       {% endfor %}
-    </div>
-    {% if not collections.galleryItems.length %}<p class="prose" style="color:var(--muted);">Photos flagged &ldquo;Show in main gallery&rdquo; on your blog posts will appear here automatically.</p>{% endif %}
+    </ul>
+    {% else %}
+    <p class="prose" style="color:var(--muted);">Photos flagged &ldquo;Show in main gallery&rdquo; on your blog posts will appear here automatically.</p>
+    {% endif %}
   </div>
 </section>
-{% block scripts %}<script src="assets/js/lightbox.js" defer></script>{% endblock %}
+<script src="assets/js/lightbox.js?v={{ build }}" defer></script>

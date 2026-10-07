@@ -185,5 +185,42 @@ module.exports = function (eleventyConfig) {
   // Safe JSON for <script type="application/ld+json"> blocks
   eleventyConfig.addFilter("ldjson", (obj) => JSON.stringify(obj).replace(/</g, "\\u003c"));
 
+  // ============================================================
+  // Gallery: read each photo's real width and height at build time, so the page
+  // can reserve the right space before the photo loads (no jumping layout).
+  // ============================================================
+  const sizeCache = {};
+  eleventyConfig.addFilter("imgSize", (src) => {
+    if (!src) return null;
+    if (sizeCache[src] !== undefined) return sizeCache[src];
+    let out = null;
+    try {
+      const file = require("path").join("src", String(src).replace(/^\//, ""));
+      const b = require("fs").readFileSync(file);
+      if (b[0] === 0x89 && b[1] === 0x50) {
+        out = { w: b.readUInt32BE(16), h: b.readUInt32BE(20) }; // PNG
+      } else if (b[0] === 0xff && b[1] === 0xd8) {
+        let i = 2; // JPEG: walk the segments to the frame header
+        while (i < b.length - 9) {
+          if (b[i] !== 0xff) { i++; continue; }
+          const m = b[i + 1];
+          if (m >= 0xc0 && m <= 0xcf && m !== 0xc4 && m !== 0xc8 && m !== 0xcc) {
+            out = { w: b.readUInt16BE(i + 7), h: b.readUInt16BE(i + 5) };
+            break;
+          }
+          if (m === 0xd8 || m === 0x01 || (m >= 0xd0 && m <= 0xd7)) { i += 2; continue; }
+          i += 2 + b.readUInt16BE(i + 2);
+        }
+      }
+    } catch (e) { out = null; }
+    sizeCache[src] = out;
+    return out;
+  });
+
+  // How many gallery photos sit in one category (for the filter buttons)
+  eleventyConfig.addFilter("inGalleryCategory", (items, name) =>
+    (items || []).filter((g) => g.category === name).length
+  );
+
   return { dir: { input: "src", output: "_site", includes: "_includes", data: "_data" } };
 };

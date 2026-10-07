@@ -43,11 +43,18 @@ ogType: article
       {% if gallery and gallery.length %}
       <section class="postgallery" aria-label="Photo gallery">
         <h2>Gallery</h2>
-        <div class="galpage" data-lightbox>
-          {% for g in gallery %}{% if g.image %}
-          <figure class="gcell"><img src="{{ g.image }}" alt="{{ g.alt or g.caption or title }}" loading="lazy" data-caption="{{ g.caption }}">{% if g.caption %}<figcaption>{{ g.caption }}</figcaption>{% endif %}</figure>
+        <ul class="pg pg-post" data-lightbox>
+          {% for g in gallery %}{% if g.image %}{% set sz = g.image | imgSize %}
+          <li class="pg-item">
+            <figure>
+              <a class="pg-link" href="{{ g.image }}" data-lb data-caption="{{ g.caption }}" aria-label="View larger: {{ g.alt or g.caption or title }}">
+                <img src="{{ g.image }}" alt="{{ g.alt or g.caption or title }}" loading="lazy" decoding="async"{% if sz %} width="{{ sz.w }}" height="{{ sz.h }}"{% endif %}>
+              </a>
+              {% if g.caption %}<figcaption>{{ g.caption }}</figcaption>{% endif %}
+            </figure>
+          </li>
           {% endif %}{% endfor %}
-        </div>
+        </ul>
       </section>
       {% endif %}
     </div>
@@ -81,5 +88,5 @@ ogType: article
     </div>
   </div>
 </section>
-<script src="assets/js/lightbox.js" defer></script>
+<script src="assets/js/lightbox.js?v={{ build }}" defer></script>
 <script src="assets/js/blog.js?v={{ build }}" defer></script>

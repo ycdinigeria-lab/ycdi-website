@@ -833,3 +833,63 @@ footer a:focus-visible{outline-color:var(--yellow);}
 
 /* Gallery: keep faces in frame when a portrait photo is cropped to the landscape cell */
 .gcell img{object-position:50% 18%;}
+
+/* ============================================================
+   Photo gallery, October 2026: uncropped masonry grid, filter
+   chips with counts, captions, and a full-screen photo viewer.
+   ============================================================ */
+.pg-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;margin-bottom:clamp(22px,3vw,32px);}
+.pg-filter{display:flex;flex-wrap:wrap;gap:10px;}
+.pg-chip{min-height:44px;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid var(--line);border-radius:5px;background:#fff;color:var(--ink);font-family:"Montserrat",sans-serif;font-weight:700;font-size:13.5px;cursor:pointer;transition:border-color .15s ease,color .15s ease;}
+.pg-chip:hover{border-color:var(--deepblue);color:var(--deepblue);}
+.pg-chip.is-active{background:var(--deepblue);border-color:var(--deepblue);color:#fff;}
+.pg-chip .n{font-weight:600;font-size:12px;opacity:.75;}
+.pg-count{margin:0;font-size:14px;color:#63646a;}
+
+/* Masonry: every photo keeps its own shape, nothing is cropped */
+.pg{list-style:none;margin:0;padding:0;columns:3;column-gap:16px;}
+.pg-item{break-inside:avoid;margin:0 0 20px;}
+.pg-item[hidden]{display:none;}
+.pg figure{margin:0;}
+.pg-link{position:relative;display:block;border-radius:8px;overflow:hidden;background:var(--offwhite);cursor:zoom-in;}
+.pg-link img{width:100%;height:auto;display:block;transition:transform .35s ease;}
+.pg-link:hover img,.pg-link:focus-visible img{transform:scale(1.03);}
+.pg-zoom{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;background:rgba(29,2,6,.62);color:#fff;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s ease;}
+.pg-zoom svg{width:17px;height:17px;}
+.pg-link:hover .pg-zoom,.pg-link:focus-visible .pg-zoom{opacity:1;}
+.pg figcaption{padding:9px 2px 0;font-size:13.5px;line-height:1.45;color:#55565b;display:flex;flex-direction:column;gap:2px;}
+.pg figcaption .cap{color:var(--ink);font-weight:600;}
+.pg figcaption .src{color:var(--deepblue);font-size:12.5px;text-decoration:none;}
+.pg figcaption .src:hover{text-decoration:underline;}
+.pg-post{columns:3;}
+@media(max-width:900px){.pg,.pg-post{columns:2;column-gap:12px;}.pg-item{margin-bottom:16px;}}
+@media(max-width:340px){.pg,.pg-post{columns:1;}}
+@media(hover:none){.pg-zoom{display:none;}}
+
+/* Full-screen photo viewer */
+html.pv-open{overflow:hidden;}
+.pv{position:fixed;inset:0;z-index:1000;background:rgba(14,4,6,.95);display:grid;grid-template-columns:72px minmax(0,1fr) 72px;align-items:center;justify-items:center;padding:56px 0 20px;}
+.pv[hidden]{display:none;}
+.pv-fig{grid-column:2;margin:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:0;}
+.pv-img{max-width:100%;max-height:calc(100vh - 160px);width:auto;height:auto;object-fit:contain;border-radius:6px;transition:opacity .2s ease;}
+.pv.is-loading .pv-img{opacity:.35;}
+.pv-cap{color:#fff;font-size:15px;line-height:1.5;text-align:center;max-width:60ch;padding:0 16px;min-height:1.5em;}
+.pv-story{display:block;margin-top:2px;color:var(--yellow);font-weight:600;font-size:14px;}
+.pv-count{position:absolute;top:18px;left:22px;margin:0;color:rgba(255,255,255,.8);font-family:"Montserrat",sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;}
+.pv-btn{width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s ease;}
+.pv-btn[hidden]{display:none;}
+.pv-btn:hover{background:rgba(255,255,255,.28);}
+.pv-btn:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;}
+.pv-btn svg{width:22px;height:22px;}
+.pv-close{position:absolute;top:10px;right:14px;}
+.pv-prev{grid-column:1;grid-row:1;}
+.pv-next{grid-column:3;grid-row:1;}
+.pv-story:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;}
+@media(max-width:700px){
+  .pv{grid-template-columns:minmax(0,1fr);padding:60px 0 84px;}
+  .pv-fig{grid-column:1;}
+  .pv-img{max-height:calc(100vh - 230px);border-radius:0;}
+  .pv-prev,.pv-next{position:absolute;bottom:18px;grid-column:auto;}
+  .pv-prev{left:calc(50% - 60px);}
+  .pv-next{right:calc(50% - 60px);}
+}
