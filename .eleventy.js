@@ -9,6 +9,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/!(about).html": "." });
   eleventyConfig.addPassthroughCopy({ "admin": "admin" });
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
+  // Root-level icon files: browsers and search engines request these at fixed addresses.
+  eleventyConfig.addPassthroughCopy({ "src/favicon.ico": "favicon.ico" });
+  eleventyConfig.addPassthroughCopy({ "src/site.webmanifest": "site.webmanifest" });
 
   // Readable date
   eleventyConfig.addFilter("readableDate", (d) => {
